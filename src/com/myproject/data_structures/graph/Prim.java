@@ -10,9 +10,10 @@ public class Prim extends Graph {
         super(V);
     }
 
-    public static int primMST(int V, List<List<Edge>> list) {
+    public static int primMST(int V, Graph G) {
 
         List<Boolean> inMST = new ArrayList<>();
+        List<List<Edge>> list = G.list;
 
         for (int i = 0; i < V; i++) {
             inMST.add(false);
@@ -61,6 +62,6 @@ public class Prim extends Graph {
         g.addEdge(1, 3, 40);
         g.addEdge(2, 3, 50);
 
-        System.out.println("MST Cost = " + primMST(g.V, g.list));
+        System.out.println("MST Cost = " + primMST(g.V, g));
     }
 }
