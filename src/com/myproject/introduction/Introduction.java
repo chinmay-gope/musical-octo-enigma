@@ -1,21 +1,25 @@
 package com.myproject.introduction;
 
 public class Introduction {
-    static void main() throws ClassNotFoundException {
+    static {
+        System.out.println("Static block loaded");
+    }
+
+    static int objCreationCount = 0;
+
+    {
+        objCreationCount++;
+    }
+
+      void main() {
         System.out.println("Hello World");
+        Introduction i1 = new Introduction();
+        Introduction i2 = new Introduction();
+        Introduction i3 = new Introduction();
+        Introduction i4 = new Introduction();
 
-        Class.forName("java.lang.System");
-        Class.forName("java.lang.String");
-        Class.forName("java.math.BigInteger");
-        Class.forName("com.myproject.introduction.Movie");
-
-        String s = "HelloWorld";
-
-        System.out.println(s.charAt(0));
-        System.out.println(s.substring(5));
-        System.out.println(s.subSequence(0, 5));
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        System.out.println("Main method ended!");
+//        If main method is static     : it  will not create an object for main() hence o/p is "4"
+//        If main method is non-static : it  will create an object for main() also hence o/p is "5"
+        System.out.println("Count : " + (objCreationCount - 1));
     }
 }

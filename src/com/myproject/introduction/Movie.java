@@ -6,8 +6,8 @@ public class Movie {
 
     static String industryName = "Bollywood";
 
-    void getMovieInfo(int movieID, String movieName, String industryName) {
-        System.out.printf(" Movie ID: %d, MovieName: %s, Industry: %s%n", movieID, movieName, industryName);
+    void getMovieInfo(Movie movie) {
+        System.out.printf(" Movie ID: %d, MovieName: %s, Industry: %s%n", movie.movieID, movie.movieName, Movie.industryName);
     }
 
     void main() {
@@ -17,21 +17,21 @@ public class Movie {
 
         m1.movieID = 101;
         m1.movieName = "DDLJ";
-        getMovieInfo(m1.movieID, m1.movieName, industryName);
+        getMovieInfo(m1);
 
         m2.movieID = 102;
         m2.movieName = "Sachin A Billion Dreams";
-        getMovieInfo(m2.movieID, m2.movieName, industryName);
+        getMovieInfo(m2);
 
         m3.movieID = 103;
         m3.movieName = "Harry Potter";
         industryName = "Hollywood";
-        getMovieInfo(m3.movieID, m3.movieName, industryName);
+        getMovieInfo(m3);
 
         System.out.println("Industry Name: " + industryName);
         System.out.println("Industry Name: " + Movie.industryName);
 
         industryName = "Mollywood";
-        System.out.println(industryName);
+        System.out.println("Industry Name: " + Movie.industryName);
     }
 }
