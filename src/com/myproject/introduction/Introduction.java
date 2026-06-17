@@ -11,7 +11,7 @@ public class Introduction {
         objCreationCount++;
     }
 
-      void main() {
+    void main() {
         System.out.println("Hello World");
         Introduction i1 = new Introduction();
         Introduction i2 = new Introduction();
