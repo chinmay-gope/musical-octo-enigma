@@ -57,13 +57,13 @@ public class Graph {
      *             </p>
      *
      *             <pre>
-     *                                                                                     {@code
-     *                                                                                     @Override
-     *                                                                                     public void addEdge(int src, int dest, int wt) {
-     *                                                                                       list.get(src).add(new Edge(dest, wt));
-     *                                                                                     }
-     *                                                                                     }
-     *                                                                                     </pre>
+     *                                                                                                 {@code
+     *                                                                                                 @Override
+     *                                                                                                 public void addEdge(int src, int dest, int wt) {
+     *                                                                                                   list.get(src).add(new Edge(dest, wt));
+     *                                                                                                 }
+     *                                                                                                 }
+     *                                                                                                 </pre>
      */
     public void addEdge(int src, int dest) {
         addEdge(src, dest, 1);
@@ -85,13 +85,13 @@ public class Graph {
      *             </p>
      *
      *             <pre>
-     *                                                                                     {@code
-     *                                                                                     @Override
-     *                                                                                     public void addEdge(int src, int dest, int wt) {
-     *                                                                                       list.get(src).add(new Edge(dest, wt));
-     *                                                                                     }
-     *                                                                                     }
-     *                                                                                     </pre>
+     *                                                                                                 {@code
+     *                                                                                                 @Override
+     *                                                                                                 public void addEdge(int src, int dest, int wt) {
+     *                                                                                                   list.get(src).add(new Edge(dest, wt));
+     *                                                                                                 }
+     *                                                                                                 }
+     *                                                                                                 </pre>
      */
     public void addEdge(int src, int dest, int wt) {
         list.get(src).add(new Edge(dest, wt));

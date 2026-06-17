@@ -86,7 +86,7 @@ public class SCC extends TarjanGraph {
         }
     }
 
-     static void main() {
+    static void main() {
 
         SCC g = new SCC(8);
 
