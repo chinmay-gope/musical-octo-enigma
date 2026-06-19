@@ -52,6 +52,8 @@ public class GarbageCollector {
          */
         zudio.trendz = trendz;
         trendz.zudio = zudio;
+        System.out.println(zudio);
+        System.out.println(trendz);
 
         /*
         a ──► A ──► B
@@ -67,6 +69,9 @@ public class GarbageCollector {
         System.out.println(obj1);
         System.out.println(obj2);
         System.out.println(obj3);
+        
+        System.out.println(zudio);
+        System.out.println(trendz);
 
         System.gc(); // Manual way
     }
@@ -74,8 +79,19 @@ public class GarbageCollector {
 
 class Zudio {
     Trendz trendz;
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Zudio finalized");
+        super.finalize();
+    }
 }
 
 class Trendz {
     Zudio zudio;
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Trendz finalized");
+        super.finalize();
+    }
 }
