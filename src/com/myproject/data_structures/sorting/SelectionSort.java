@@ -1,4 +1,4 @@
-package com.myproject.data_structures.graph.sorting;
+package com.myproject.data_structures.sorting;
 
 import java.util.Arrays;
 
