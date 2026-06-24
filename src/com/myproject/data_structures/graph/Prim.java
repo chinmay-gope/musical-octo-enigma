@@ -13,7 +13,7 @@ public class Prim extends Graph {
     public static int primMST(int V, Graph G) {
 
         List<Boolean> inMST = new ArrayList<>();
-        List<List<Edge>> list = G.list;
+        List<List<Edge>> list = G.adjacencyList;
 
         for (int i = 0; i < V; i++) {
             inMST.add(false);

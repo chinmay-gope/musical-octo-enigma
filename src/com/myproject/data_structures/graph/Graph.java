@@ -31,14 +31,14 @@ class Pair implements Comparable<Pair> {
 
 public class Graph {
     int V;
-    List<List<Edge>> list;
+    List<List<Edge>> adjacencyList;
 
     public Graph(int V) {
         this.V = V;
-        list = new ArrayList<>();
+        adjacencyList = new ArrayList<>();
 
         for (int i = 0; i < V; i++) {
-            list.add(new ArrayList<>());
+            adjacencyList.add(new ArrayList<>());
         }
     }
 
@@ -60,7 +60,7 @@ public class Graph {
      *                                                                                                 {@code
      *                                                                                                 @Override
      *                                                                                                 public void addEdge(int src, int dest, int wt) {
-     *                                                                                                   list.get(src).add(new Edge(dest, wt));
+     *                                                                                                   adjacencyList.get(src).add(new Edge(dest, wt));
      *                                                                                                 }
      *                                                                                                 }
      *                                                                                                 </pre>
@@ -88,14 +88,14 @@ public class Graph {
      *                                                                                                 {@code
      *                                                                                                 @Override
      *                                                                                                 public void addEdge(int src, int dest, int wt) {
-     *                                                                                                   list.get(src).add(new Edge(dest, wt));
+     *                                                                                                   adjacencyList.get(src).add(new Edge(dest, wt));
      *                                                                                                 }
      *                                                                                                 }
      *                                                                                                 </pre>
      */
     public void addEdge(int src, int dest, int wt) {
-        list.get(src).add(new Edge(dest, wt));
-        list.get(dest).add(new Edge(src, wt));
+        adjacencyList.get(src).add(new Edge(dest, wt));
+        adjacencyList.get(dest).add(new Edge(src, wt));
     }
 
     public void printAdjacencyList() {
@@ -104,7 +104,7 @@ public class Graph {
 
             System.out.print(i + " : ");
 
-            for (Edge e : list.get(i)) {
+            for (Edge e : adjacencyList.get(i)) {
 
                 System.out.print("(" + e.v + "," + e.wt + ") ");
             }
@@ -127,7 +127,7 @@ public class Graph {
 
             System.out.print(curr + " ");
 
-            for (Edge e : list.get(curr)) {
+            for (Edge e : adjacencyList.get(curr)) {
 
                 int v = e.v;
 
@@ -146,7 +146,7 @@ public class Graph {
         vis[u] = true;
         System.out.print(u + " ");
 
-        for (Edge e : list.get(u)) {
+        for (Edge e : adjacencyList.get(u)) {
 
             int v = e.v;
 

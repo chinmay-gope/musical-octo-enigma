@@ -12,7 +12,7 @@ public class SCC extends TarjanGraph {
 
     @Override
     public void addEdge(int src, int dest) {
-        list.get(src).add(new Edge(dest, 1));
+        adjacencyList.get(src).add(new Edge(dest, 1));
     }
 
     private static void topSort(
@@ -62,7 +62,7 @@ public class SCC extends TarjanGraph {
         Graph transpose = new Graph(V);
 
         for (int i = 0; i < V; i++) {
-            transpose.list.set(i, new ArrayList<>());
+            transpose.adjacencyList.set(i, new ArrayList<>());
             visited[i] = false;
         }
 
@@ -71,7 +71,7 @@ public class SCC extends TarjanGraph {
                 int v = edge.v;
 
                 // Reverse edge
-                transpose.list.get(v).add(new Edge(u, 1));
+                transpose.adjacencyList.get(v).add(new Edge(u, 1));
             }
         }
 
@@ -80,7 +80,7 @@ public class SCC extends TarjanGraph {
             int curr = stack.pop();
 
             if (!visited[curr]) {
-                dfs(transpose.list, curr, visited);
+                dfs(transpose.adjacencyList, curr, visited);
                 System.out.println();
             }
         }
@@ -117,9 +117,9 @@ public class SCC extends TarjanGraph {
         g.addEdge(5, 6);
 
         System.out.println("Strongly Connected Components:");
-        kosaraju(g.list, g.V);
+        kosaraju(g.adjacencyList, g.V);
 
         System.out.println();
-        findBridgesAndArticulationPoints(g.list, g.V);
+        findBridgesAndArticulationPoints(g.adjacencyList, g.V);
     }
 }

@@ -96,6 +96,6 @@ public class TarjanGraph extends Graph {
         g.addEdge(0, 3, 1);
         g.addEdge(3, 4, 1);
 
-        findBridgesAndArticulationPoints(g.list, g.V);
+        findBridgesAndArticulationPoints(g.adjacencyList, g.V);
     }
 }

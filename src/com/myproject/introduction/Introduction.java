@@ -1,22 +1,28 @@
 package com.myproject.introduction;
 
-import java.util.ArrayList;
-
 public class Introduction {
     static void main() {
-        ArrayList<String> list = new ArrayList<>();
 
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        list.add("D");
+        String _$name = "John";
+        System.out.println("Hello " + _$name);
 
-        for (String s : list) {
-            if (s.equals("B")) {
-                list.remove(s);
-            }
+        var name = "Tony".toLowerCase();
+        System.out.println("Hello " + name);
+        String var = "Demo";
+//        var var = 40;
+
+        boolean isIndian = true;
+        boolean $_isIndian = true;
+
+        boolean $boolean = false;
+
+        if (48 == '0') {
+            System.out.println("TRUE IS PRINTED");
+        } else {
+            System.out.println("FALSE IS PRINTED");
         }
 
-        System.out.println(list);
+        System.out.println(var);
+        System.out.println($boolean);
     }
 }

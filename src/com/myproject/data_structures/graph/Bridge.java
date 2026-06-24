@@ -73,6 +73,6 @@ public class Bridge {
         g.addEdge(1, 2);
         g.addEdge(1, 3);
 
-        getBridges(g.list, g.V);
+        getBridges(g.adjacencyList, g.V);
     }
 }

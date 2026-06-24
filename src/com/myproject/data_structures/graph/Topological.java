@@ -11,14 +11,14 @@ public class Topological extends Graph {
     @Override // Directed edge
     public void addEdge(int src, int dest) {
 
-        list.get(src).add(new Edge(dest, 1));
+        adjacencyList.get(src).add(new Edge(dest, 1));
     }
 
     void dfs(int curr, boolean[] vis, Stack<Integer> s) {
 
         vis[curr] = true;
 
-        for (Edge e : list.get(curr)) {
+        for (Edge e : adjacencyList.get(curr)) {
 
             int v = e.v;
 
@@ -56,7 +56,7 @@ public class Topological extends Graph {
         // calculate indegree
         for (int u = 0; u < V; u++) {
 
-            for (Edge e : list.get(u)) {
+            for (Edge e : adjacencyList.get(u)) {
 
                 int v = e.v;
 
@@ -79,7 +79,7 @@ public class Topological extends Graph {
 
             result.add(curr);
 
-            for (Edge e : list.get(curr)) {
+            for (Edge e : adjacencyList.get(curr)) {
 
                 int v = e.v;
 

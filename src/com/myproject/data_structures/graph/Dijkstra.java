@@ -68,6 +68,6 @@ public class Dijkstra extends Graph {
         System.out.println("Adjacency List:");
         g.printAdjacencyList();
 
-        dijkstra(0, g.list, g.V);
+        dijkstra(0, g.adjacencyList, g.V);
     }
 }

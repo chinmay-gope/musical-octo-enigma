@@ -12,7 +12,7 @@ public class BellmanFord extends Graph {
 
     @Override // Directed edge
     public void addEdge(int src, int dest, int wt) {
-        list.get(src).add(new Edge(dest, wt));
+        adjacencyList.get(src).add(new Edge(dest, wt));
     }
 
     static void bellmanFord(int src, List<List<Edge>> g, int V) {
@@ -84,6 +84,6 @@ public class BellmanFord extends Graph {
         g.addEdge(1, 4, -1);
         g.addEdge(3, 4, 4);
 
-        bellmanFord(0, g.list, g.V);
+        bellmanFord(0, g.adjacencyList, g.V);
     }
 }

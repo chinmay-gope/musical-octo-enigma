@@ -90,6 +90,6 @@ public class ArticulationPoint {
         g.addEdge(0, 3, 1);
         g.addEdge(3, 4, 1);
 
-        getArticulationPoints(g.list, g.V);
+        getArticulationPoints(g.adjacencyList, g.V);
     }
 }
