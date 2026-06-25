@@ -1,28 +1,25 @@
 package com.myproject.introduction;
 
 public class Introduction {
+
     static void main() {
+        double totalAmount = 363;
+        double perCost = 18.5;
+        double forChoco = 5;
 
-        String _$name = "John";
-        System.out.println("Hello " + _$name);
+        double canPurchase = Math.floor(totalAmount / perCost);
+        double freeChoco = Math.floor(canPurchase / forChoco);
 
-        var name = "Tony".toLowerCase();
-        System.out.println("Hello " + name);
-        String var = "Demo";
-//        var var = 40;
+        double totalChoco = canPurchase + freeChoco;
 
-        boolean isIndian = true;
-        boolean $_isIndian = true;
+        double remainingAmount = totalAmount % perCost;
 
-        boolean $boolean = false;
-
-        if (48 == '0') {
-            System.out.println("TRUE IS PRINTED");
-        } else {
-            System.out.println("FALSE IS PRINTED");
-        }
-
-        System.out.println(var);
-        System.out.println($boolean);
+        System.out.println("Total Amount: " + totalAmount);
+        System.out.println("Each Choco Cost: " + perCost);
+        System.out.println("-------------------------------");
+        System.out.println("Can Purchase: " + canPurchase);
+        System.out.println("Free Choco: " + freeChoco);
+        System.out.println("Total Choco: " + totalChoco);
+        System.out.println("Remaining Amount: " + remainingAmount);
     }
 }
