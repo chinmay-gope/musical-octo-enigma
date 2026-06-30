@@ -26,6 +26,7 @@ public class MergeSort {
     private static void merge(int[] arr, int l, int m, int r) {
         int[] temp = new int[r - l + 1];
         int i = l, j = m + 1, k = 0;
+
         while (i <= m && j <= r) {
             if (arr[i] <= arr[j]) {
                 temp[k++] = arr[i++];

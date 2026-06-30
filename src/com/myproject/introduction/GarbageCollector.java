@@ -69,11 +69,42 @@ public class GarbageCollector {
         System.out.println(obj1);
         System.out.println(obj2);
         System.out.println(obj3);
-        
+
         System.out.println(zudio);
         System.out.println(trendz);
 
         System.gc(); // Manual way
+
+        System.out.println("________________________________");
+
+        int i1 = 65;
+
+        char c1 = (char) i1;
+
+        IO.println(i1 + " " + c1);
+        IO.println(i1 + c1);
+
+        Character ch1 = (char) i1;
+        Character ch2 = 'i';
+        IO.println(ch1 + " " + ch2);
+        IO.println(ch1 + ch2);
+
+        byte bite = 127;
+        bite++;
+        IO.println(bite);
+
+        bite = 127;
+        double temp = bite + 1.0;
+        IO.println(temp);
+
+        System.out.println(null == null);
+        System.out.println("" == "");
+
+        System.out.println("" + null); //null
+        System.out.println(null == "" + null); //false
+        System.out.println(null instanceof Object); //false
+
+
     }
 }
 
@@ -89,6 +120,7 @@ class Zudio {
 
 class Trendz {
     Zudio zudio;
+
     @Override
     protected void finalize() throws Throwable {
         System.out.println("Trendz finalized");

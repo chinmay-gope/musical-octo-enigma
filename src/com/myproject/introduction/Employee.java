@@ -3,10 +3,6 @@ package com.myproject.introduction;
 public class Employee {
     static Employee emp = new Employee();
 
-    //     static -> instance (done)
-//     static -> static   (done)
-//     instance -> static (done)
-//     instance -> instance (done)
     static void main() {
         System.out.println("Started");
         emp.method1();
