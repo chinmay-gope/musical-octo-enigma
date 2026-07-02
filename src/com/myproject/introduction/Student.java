@@ -12,7 +12,7 @@ public class Student {
     float percentage = 75.12F;
     boolean passedStatus = true;
 
-    static void main() {
+    void main() {
         Student student = new Student();
         int[] marks = new int[5];
         marks[0] = 100;
@@ -21,13 +21,25 @@ public class Student {
         marks[3] = 96;
         marks[4] = 98;
 
-        IO.println(student.rollNo);
-        IO.println(student.name);
-        IO.println(student.age);
-        IO.println(student.gender);
-        IO.println(student.section);
+        String n1 = "100";
+        String n2 = "99.99";
+        String n3 = "true";
+        char n4 = 'A';
+
+        int num1 = Integer.parseInt(n1);
+        double num2 = Double.parseDouble(n2);
+        boolean num3 = Boolean.parseBoolean(n3);
+        String num4 = Character.toString(n4);
+
+        IO.println(num1 + " " + num2 + " " + num3 + " " + num4);
+
+        IO.println(rollNo);
+        IO.println(name);
+        IO.println(age);
+        IO.println(gender);
+        IO.println(section);
         IO.println(Arrays.toString(marks));
-        IO.println(student.percentage + " %");
-        IO.println(student.passedStatus);
+        IO.println(percentage + " %");
+        IO.println(passedStatus);
     }
 }
