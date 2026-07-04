@@ -6,14 +6,14 @@ import java.util.Scanner;
 import static com.myproject.billing.RestaurantBill.*;
 
 public class Cart {
-    static void addItem(Scanner sc, Map<RestaurantBill.MenuItem, Integer> cart) {
+    static void addItem(Scanner sc, Map<MenuItem, Integer> cart) {
 
         printMenu();
 
         System.out.print("Enter item : ");
         String input = sc.nextLine();
 
-        RestaurantBill.MenuItem item = findMenuItem(input);
+        MenuItem item = findMenuItem(input);
 
         if (item == null) {
             System.out.println("Item not found.");
@@ -35,7 +35,7 @@ public class Cart {
         System.out.println("Added Successfully.");
     }
 
-    static void removeItem(Scanner sc, Map<RestaurantBill.MenuItem, Integer> cart) {
+    static void removeItem(Scanner sc, Map<MenuItem, Integer> cart) {
 
         if (cart.isEmpty()) {
             System.out.println("Cart is Empty.");
@@ -48,7 +48,7 @@ public class Cart {
 
         String input = sc.nextLine();
 
-        RestaurantBill.MenuItem item = findMenuItem(input);
+        MenuItem item = findMenuItem(input);
 
         if (item == null || !cart.containsKey(item)) {
             System.out.println("Item not in cart.");
@@ -117,12 +117,12 @@ public class Cart {
 
             int qty = entry.getValue();
 
-            double amount = item.price * qty;
+            double amount = item.price() * qty;
 
             subtotal += amount;
 
             System.out.printf("%-20s %-10d ₹%.2f%n",
-                    item.name,
+                    item.name(),
                     qty,
                     amount);
         }
