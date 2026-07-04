@@ -1,8 +1,10 @@
-package com.myproject.introduction;
+package com.myproject.billing;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+import static com.myproject.billing.Cart.*;
 
 public class RestaurantBill {
 
@@ -24,41 +26,51 @@ public class RestaurantBill {
         Map<MenuItem, Integer> cart = new LinkedHashMap<>();
 
         while (true) {
-            printMenu();
-            System.out.print("Enter your choice (number or item name): ");
-            String input = sc.nextLine().trim();
 
-            if (input.equalsIgnoreCase(
-                    String.valueOf(MENU.size() + 1)  // 6 : exit
-            ) || input.equalsIgnoreCase("exit")) {
-                printFinalBill(cart);
-                sc.close();
-                break;
+            System.out.println("""
+                    1. Add Item
+                    2. Remove Item
+                    3. Update Quantity
+                    4. View Cart
+                    5. Clear Cart
+                    6. Generate Bill & Exit
+                    """);
+
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                case 1 -> addItem(sc, cart);
+
+                case 2 -> removeItem(sc, cart);
+
+                case 3 -> updateQuantity(sc, cart);
+
+                case 4 -> viewCart(cart);
+
+                case 5 -> clearCart(sc, cart);
+
+                case 6 -> {
+                    printFinalBill(cart);
+                    sc.close();
+                    return;
+                }
+
+                default -> System.out.println("Invalid Choice");
             }
 
-            MenuItem item = findMenuItem(input);
-
-            if (item != null) {
-                System.out.print("Enter quantity: ");
-                int quantity = sc.nextInt();
-                sc.nextLine(); // consume newline
-                cart.put(item, cart.getOrDefault(item, 0) + quantity);
-                System.out.println(quantity + " " + item.name + "(s) added to cart.");
-            } else {
-                System.out.println("Invalid choice! Please try again.");
-            }
         }
     }
 
-    private static void printMenu() {
+    static void printMenu() {
         System.out.println("\n====== RESTAURANT MENU ======");
         MENU.forEach((key, item) ->
-                System.out.printf("%s. %-19s - ₹%d%n", key, item.name, item.price)
-        );
+                System.out.printf("%s. %-19s - ₹%d%n", key, item.name, item.price));
         System.out.println(MENU.size() + 1 + ". Generate Bill & Exit");
     }
 
-    private static MenuItem findMenuItem(String input) {
+    static MenuItem findMenuItem(String input) {
         if (MENU.containsKey(input)) {
             return MENU.get(input);
         }
@@ -87,7 +99,7 @@ public class RestaurantBill {
             System.out.printf("%-20s %-8d ₹%9.2f%n", item.name, qty, amount);
         }
 
-        System.out.println("-----------------------------------------------");
+        printSeparator();
 
         // Subtotal
         System.out.printf("%-20s %-8s ₹%9.2f%n", "Subtotal", "", subtotal);
@@ -101,7 +113,7 @@ public class RestaurantBill {
         System.out.printf("%-20s %-8s ₹%9.2f%n", "GST (5%)", "", gst);
         System.out.printf("%-20s %-8s ₹%9.2f%n", "Service Charge (10%)", "", serviceCharge);
 
-        System.out.println("-----------------------------------------------");
+        printSeparator();
 
         // Total
         System.out.printf("%-20s %-8s ₹%9.2f%n", "TOTAL", "", total);
@@ -109,8 +121,11 @@ public class RestaurantBill {
         System.out.println("\nThank you! Visit Again.");
     }
 
+    static void printSeparator() {
+        System.out.println("-----------------------------------------------");
+    }
 
-    private static class MenuItem {
+    public static class MenuItem {
         String name;
         int price;
 
