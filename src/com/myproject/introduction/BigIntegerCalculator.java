@@ -9,16 +9,14 @@ public class BigIntegerCalculator {
         BigInteger num1 = new BigInteger("390528059283439380304963846334");
         BigInteger num2 = new BigInteger("496038439488934753994037603375");
 
-//        print("Addition", add(num1, num2));
-//        print("Subtraction", subtract(num1, num2));
-//        print("Multiply", multiply(num1, num2));
-//        print("Divide", divide(num1, BigInteger.valueOf(500)));
-//        print("Divide", divide(num1, BigInteger.valueOf(0)));
-//        print("Modulo", mod(num1, num2));
-//        print("Power (2)", pow(num1, 2));
-//        print("Power (3)", pow(num2, 3));
-
-
+        print("Addition", add(num1, num2));
+        print("Subtraction", subtract(num1, num2));
+        print("Multiply", multiply(num1, num2));
+        print("Divide", divide(num1, BigInteger.valueOf(500)));
+        print("Divide", divide(num1, BigInteger.valueOf(0)));
+        print("Modulo", mod(num1, num2));
+        print("Power (2)", pow(num1, 2));
+        print("Power (3)", pow(num2, 3));
     }
 
     BigInteger add(BigInteger a, BigInteger b) {

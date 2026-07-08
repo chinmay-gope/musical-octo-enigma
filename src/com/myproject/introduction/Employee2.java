@@ -14,7 +14,7 @@ public class Employee2 {
 
         UUID empId = emp.getEmpId();
 
-        System.out.print("Employee Name: ");
+        System.out.print("MyEmployee Name: ");
         String name = sc.nextLine();
 
         System.out.print("Enter Department: ");
@@ -68,7 +68,7 @@ public class Employee2 {
 
     void isPromoted(byte exp) {
         if (exp >= 5) {
-            System.out.println("Employee is Promoted on Experience Bases");
+            System.out.println("MyEmployee is Promoted on Experience Bases");
             isPromoted = true;
         }
         System.out.println("is Promoted: " + isPromoted);
@@ -77,7 +77,7 @@ public class Employee2 {
     private void printDetails(UUID empId, String name, String dept, double salary,
                               float bonus, byte exp, boolean perm, String mail) {
         System.out.println("========== EMPLOYEE DETAILS ==========");
-        System.out.println("Employee ID: " + empId);
+        System.out.println("MyEmployee ID: " + empId);
         System.out.println("Name: " + name);
         System.out.println("Department: " + dept);
         System.out.println("Salary: " + salary);
