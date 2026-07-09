@@ -1,5 +1,7 @@
 package com.myproject.introduction;
 
+import java.util.Scanner;
+
 public class Bank {
     static int accountNumber = 1000;
     String customerName;
@@ -55,5 +57,17 @@ public class Bank {
 
         Bank bank3 = new Bank("John", 100);
         bank3.showDetails();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your Name : ");
+        String name = sc.nextLine();
+        System.out.println("Enter your Account Balance : ");
+        double accountBalance = sc.nextDouble();
+        Bank myBank = new Bank(name, accountBalance);
+
+        myBank.deposit(accountBalance * 0.35);
+        myBank.showDetails();
+        myBank.withdraw(accountBalance * 0.29);
+        myBank.showDetails();
     }
 }

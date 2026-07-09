@@ -18,7 +18,7 @@ public class Student2 {
         String fullName = sc.nextLine();
 
         System.out.print("Enter Age: ");
-        int age = sc.nextInt();
+        int sage = sc.nextInt();
 
         System.out.print("Enter Gender (M/F): ");
         char gender = sc.next().toUpperCase().charAt(0);
@@ -70,7 +70,7 @@ public class Student2 {
         student.printDetails(
                 rollNo,
                 fullName,
-                age,
+                sage,
                 gender,
                 height,
                 weight,
@@ -111,7 +111,7 @@ public class Student2 {
         System.out.println("Marks avg: " + avg);
     }
 
-    void printDetails(int rollNo, String fullName, int age,
+    void printDetails(int rollNo, String fullName, int sage,
                       char gender,
                       double height, double weight,
                       String address, String city, String state, String country,
@@ -138,7 +138,7 @@ public class Student2 {
                         Favorite Subject : %s
                         =====================================
                         """,
-                rollNo, fullName, age, gender,
+                rollNo, fullName, sage, gender,
                 height, weight,
                 address, city, state, country,
                 zip, phoneNumber, cgpa,

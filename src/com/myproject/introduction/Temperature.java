@@ -104,15 +104,15 @@ public class Temperature {
         }
 
         static void priceAnalysis(double price, int year) {
-            int age = 2026 - year;
-            double depreciation = price - (age * 5000);
+            int sage = 2026 - year;
+            double depreciation = price - (sage * 5000);
             double resaleValue = depreciation * 0.80; // assume 20% dealer margin
 
             System.out.printf("""
                     Age (years)     : %d
                     Current Value   : %.2f
                     Resale Value    : %.2f
-                    """, age, depreciation, resaleValue);
+                    """, sage, depreciation, resaleValue);
         }
     }
 
@@ -172,7 +172,7 @@ public class Temperature {
             String name = sc.nextLine();
 
             System.out.print("Enter Age: ");
-            int age = sc.nextInt();
+            int sage = sc.nextInt();
 
             System.out.print("Enter Blood Group: ");
             String bloodGroup = sc.next();
@@ -184,7 +184,7 @@ public class Temperature {
                     Age        : %d
                     Blood Group: %s
                     ===========================
-                    """, id, name, age, bloodGroup);
+                    """, id, name, sage, bloodGroup);
         }
     }
 

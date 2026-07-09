@@ -18,9 +18,11 @@ public class Lab1 {
         System.out.println(lab1.meth3());
         System.out.println(lab1.meth4());
         System.out.println(lab1.meth5());
-        System.out.println(lab1.meth6().length());
-        System.out.println(lab1.meth7().length());
-        System.out.println(lab1.meth8().length());
+        System.out.println("Length of " + lab1.meth6() + " is " + lab1.meth6().length());
+        System.out.println("Length of " + lab1.meth7() + " is " + lab1.meth7().length());
+        System.out.println(("Length of " + lab1.meth8() + " is " + lab1.meth8().length()));
+        System.out.println(("Length of " + lab1.meth10() + " is " + lab1.meth10().length()));
+        System.out.println(lab1.meth9());
     }
 
     int meth() {
@@ -43,15 +45,24 @@ public class Lab1 {
         return 5.0 / 0;
     }
 
+    double meth9() {
+        return 0.0 / 0.0;
+    }
+
     String meth6() {
         return Integer.toString(00);
     }
 
     String meth7() {
-        return Integer.toString(002);
+        return Integer.toString(004);
     }
+
     String meth8() {
         return Integer.toString(0023);
+    } // 19 octal
+
+    String meth10() {
+        return Integer.toString(006567); // 3447 octal
     }
 
     int square(int a) {
