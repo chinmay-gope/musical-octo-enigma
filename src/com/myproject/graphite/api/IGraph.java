@@ -1,5 +1,6 @@
 package com.myproject.graphite.api;
 
+import com.myproject.graphite.factory.GraphType;
 import com.myproject.graphite.model.Edge;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface IGraph {
     int getVertices();
 
     boolean isEmpty();
+
+    GraphType getGraphType();
 }

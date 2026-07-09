@@ -1,5 +1,7 @@
 package com.myproject.graphite.model;
 
+import com.myproject.graphite.factory.GraphType;
+
 public class UnDirectedGraph extends Graph {
     public UnDirectedGraph(int vertices) {
         super(vertices);
@@ -12,5 +14,10 @@ public class UnDirectedGraph extends Graph {
 
         adjacencyList.get(source).add(new Edge(destination, weight));
         adjacencyList.get(destination).add(new Edge(source, weight));
+    }
+
+    @Override
+    public GraphType getGraphType() {
+        return GraphType.UNDIRECTED;
     }
 }

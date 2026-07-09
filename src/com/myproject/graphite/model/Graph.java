@@ -2,6 +2,7 @@ package com.myproject.graphite.model;
 
 import com.myproject.graphite.api.IGraph;
 import com.myproject.graphite.exceptions.InvalidVertexException;
+import com.myproject.graphite.factory.GraphType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,6 +35,9 @@ public abstract class Graph implements IGraph {
 
     @Override
     public abstract void addEdge(int source, int destination, int weight);
+
+    @Override
+    public abstract GraphType getGraphType();
 
     @Override
     public List<Edge> getNeighbours(int vertex) {
