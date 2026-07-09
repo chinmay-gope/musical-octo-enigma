@@ -1,6 +1,7 @@
 package com.myproject.introduction;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class Employee {
@@ -42,5 +43,17 @@ public class Employee {
         new Employee("John Doe", 5000.0, 0.1, 2);
         new Employee("Jane Doe", 3000.0, 0.3, 1);
         new Employee("Bill Gates", 8000.0, 0.4, 3);
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter employee name: ");
+        String emp_name = sc.nextLine();
+        System.out.println("Enter employee salary: ");
+        Double salary = sc.nextDouble();
+        System.out.println("Enter employee bonus: ");
+        Double bonus = sc.nextDouble();
+        System.out.println("Enter employee Experience: ");
+        Integer experience = sc.nextInt();
+
+        new Employee(emp_name, salary, bonus, experience);
     }
 }

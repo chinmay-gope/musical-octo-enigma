@@ -1,5 +1,7 @@
 package com.myproject.introduction;
 
+import java.util.Scanner;
+
 public class Movie {
     int movieID;
     String movieName;
@@ -33,5 +35,19 @@ public class Movie {
 
         industryName = "Mollywood";
         System.out.println("Industry Name: " + Movie.industryName);
+
+        Movie movie = new Movie();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Movie ID: ");
+        movie.movieID = sc.nextInt();
+        sc.nextLine(); //consume new line
+        System.out.println("Enter Movie Name: ");
+        movie.movieName = sc.nextLine();
+        System.out.println("Enter Industry Name: ");
+        industryName = sc.nextLine();
+
+        System.out.println("Movie ID: " + movie.movieID);
+        System.out.println("Movie Name: " + movie.movieName);
+        System.out.println("Industry Name: " + industryName);
     }
 }
