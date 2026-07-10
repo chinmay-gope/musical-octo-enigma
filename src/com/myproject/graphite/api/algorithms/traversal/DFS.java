@@ -1,9 +1,9 @@
 package com.myproject.graphite.api.algorithms.traversal;
 
+import com.myproject.graphite.api.IGraph;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
 import com.myproject.graphite.api.algorithms.TraversalAlgorithm;
 import com.myproject.graphite.model.Edge;
-import com.myproject.graphite.model.Graph;
 import com.myproject.graphite.result.TraversalResult;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 public final class DFS extends GraphAlgorithm implements TraversalAlgorithm {
 
     @Override
-    public TraversalResult traverse(Graph graph, int source) {
+    public TraversalResult traverse(IGraph graph, int source) {
         validateGraph(graph);
         validateVertex(graph, source);
 
@@ -24,7 +24,7 @@ public final class DFS extends GraphAlgorithm implements TraversalAlgorithm {
         return new TraversalResult(source, traversalOrder);
     }
 
-    private void dfs(Graph graph,
+    private void dfs(IGraph graph,
                      int source,
                      boolean[] visited,
                      List<Integer> traversalOrder) {

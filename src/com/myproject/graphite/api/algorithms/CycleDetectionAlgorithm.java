@@ -1,7 +1,7 @@
 package com.myproject.graphite.api.algorithms;
 
-import com.myproject.graphite.model.Graph;
+import com.myproject.graphite.api.IGraph;
 
 public interface CycleDetectionAlgorithm {
-    boolean hasCycle(Graph graph);
+    boolean hasCycle(IGraph graph);
 }

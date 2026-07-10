@@ -17,6 +17,6 @@ public class GraphDemo {
                 .addEdge(3, 5)
                 .build();
 
-        GraphPrinter.print(graph, "Original Graph");
+        GraphPrinter.print(graph);
     }
 }

@@ -1,6 +1,8 @@
 package com.myproject.graphite.api.algorithms;
 
 import com.myproject.graphite.api.IGraph;
+import com.myproject.graphite.exceptions.UnsupportedGraphTypeException;
+import com.myproject.graphite.factory.GraphType;
 import com.myproject.graphite.model.Edge;
 import com.myproject.graphite.util.GraphValidator;
 
@@ -19,7 +21,6 @@ public abstract class GraphAlgorithm {
         GraphValidator.validateVertex(graph, vertex);
     }
 
-
     protected boolean[] createVisitedArray(IGraph graph) {
         return new boolean[graph.getVertices()];
     }
@@ -36,5 +37,23 @@ public abstract class GraphAlgorithm {
 
     protected Iterable<Edge> neighbours(IGraph graph, int vertex) {
         return graph.getNeighbours(vertex);
+    }
+
+    protected void requireDirectedGraph(IGraph graph) {
+        if (graph.getGraphType() != GraphType.DIRECTED) {
+            throw new UnsupportedGraphTypeException(
+                    GraphType.DIRECTED,
+                    graph.getGraphType()
+            );
+        }
+    }
+
+    protected void requireUndirectedGraph(IGraph graph) {
+        if (graph.getGraphType() != GraphType.UNDIRECTED) {
+            throw new UnsupportedGraphTypeException(
+                    GraphType.UNDIRECTED,
+                    graph.getGraphType()
+            );
+        }
     }
 }

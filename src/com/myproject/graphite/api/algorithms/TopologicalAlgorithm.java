@@ -1,9 +1,8 @@
 package com.myproject.graphite.api.algorithms;
 
-import com.myproject.graphite.model.Graph;
-
-import java.util.List;
+import com.myproject.graphite.api.IGraph;
+import com.myproject.graphite.result.TopologicalSortResult;
 
 public interface TopologicalAlgorithm {
-    List<Integer> sort(Graph graph);
+    TopologicalSortResult sort(IGraph graph);
 }

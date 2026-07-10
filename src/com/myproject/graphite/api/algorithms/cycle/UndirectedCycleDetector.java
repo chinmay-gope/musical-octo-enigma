@@ -8,7 +8,7 @@ import com.myproject.graphite.model.Graph;
 
 public class UndirectedCycleDetector extends GraphAlgorithm implements CycleDetectionAlgorithm {
     @Override
-    public boolean hasCycle(Graph graph) {
+    public boolean hasCycle(IGraph graph) {
         validateGraph(graph);
 
         boolean[] visited = createVisitedArray(graph);

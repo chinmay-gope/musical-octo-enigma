@@ -4,11 +4,10 @@ import com.myproject.graphite.api.IGraph;
 import com.myproject.graphite.api.algorithms.CycleDetectionAlgorithm;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
 import com.myproject.graphite.model.Edge;
-import com.myproject.graphite.model.Graph;
 
 public class DirectedCycleDetector extends GraphAlgorithm implements CycleDetectionAlgorithm {
     @Override
-    public boolean hasCycle(Graph graph) {
+    public boolean hasCycle(IGraph graph) {
         validateGraph(graph);
 
         boolean[] visited = createVisitedArray(graph);
