@@ -28,8 +28,8 @@ public final class GraphPrinter {
                 System.out.printf(
                         "%d -> %d (weight=%d)%n",
                         i,
-                        edge.getDestination(),
-                        edge.getWeight()
+                        edge.destination(),
+                        edge.weight()
                 );
             }
         }

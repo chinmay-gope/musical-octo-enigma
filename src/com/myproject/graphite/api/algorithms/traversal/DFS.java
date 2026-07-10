@@ -32,7 +32,7 @@ public final class DFS extends GraphAlgorithm implements TraversalAlgorithm {
         traversalOrder.add(source);
 
         for (Edge edge : neighbours(graph, source)) {
-            int neighbor = edge.getDestination();
+            int neighbor = edge.destination();
 
             if (!visited[neighbor]) {
                 dfs(graph, neighbor, visited, traversalOrder);

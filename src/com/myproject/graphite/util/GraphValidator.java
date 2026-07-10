@@ -17,7 +17,7 @@ public final class GraphValidator {
         for (int i = 0; i < graph.getVertices(); i++) {
             for (Edge edge : graph.getNeighbours(i)) {
 
-                if (i == edge.getDestination()) {
+                if (i == edge.destination()) {
                     return true;
                 }
             }
@@ -28,7 +28,7 @@ public final class GraphValidator {
     public static boolean hasWeightedEdges(IGraph graph) {
         for (int i = 0; i < graph.getVertices(); i++) {
             for (Edge edge : graph.getNeighbours(i)) {
-                if (edge.getWeight() != 1) {
+                if (edge.weight() != 1) {
                     return true;
                 }
             }
@@ -39,7 +39,7 @@ public final class GraphValidator {
     public static boolean hasNegativeEdges(IGraph graph) {
         for (int i = 0; i < graph.getVertices(); i++) {
             for (Edge edge : graph.getNeighbours(i)) {
-                if (edge.getWeight() < 0) {
+                if (edge.weight() < 0) {
                     return true;
                 }
             }

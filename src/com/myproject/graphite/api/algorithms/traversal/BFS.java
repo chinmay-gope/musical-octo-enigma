@@ -31,7 +31,7 @@ public class BFS extends GraphAlgorithm implements TraversalAlgorithm {
             traversalOrder.add(current);
 
             for (Edge edge : neighbours(graph, current)) {
-                int neighbor = edge.getDestination();
+                int neighbor = edge.destination();
 
                 if (!visited[neighbor]) {
                     visited[neighbor] = true;

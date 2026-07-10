@@ -33,9 +33,9 @@ public final class GraphUtils {
         for (int source = 0; source < graph.getVertices(); source++) {
             for (Edge edge : graph.getNeighbours(source)) {
                 reversed.addEdge(
-                        edge.getDestination(),
+                        edge.destination(),
                         source,
-                        edge.getWeight()
+                        edge.weight()
                 );
             }
         }
@@ -53,8 +53,8 @@ public final class GraphUtils {
             for (Edge edge : graph.getNeighbours(i)) {
                 clone.addEdge(
                         i,
-                        edge.getDestination(),
-                        edge.getWeight()
+                        edge.destination(),
+                        edge.weight()
                 );
             }
         }
