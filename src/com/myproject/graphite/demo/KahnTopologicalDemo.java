@@ -1,6 +1,7 @@
 package com.myproject.graphite.demo;
 
 import com.myproject.graphite.api.algorithms.topo.KahnTopologicalSort;
+import com.myproject.graphite.exceptions.GraphException;
 import com.myproject.graphite.model.Graph;
 import com.myproject.graphite.util.GraphBuilder;
 import com.myproject.graphite.util.GraphPrinter;
@@ -38,10 +39,14 @@ public class KahnTopologicalDemo {
         DemoUtils.printHeader("Kahn Topological Sort With Cycle", cyclic);
         System.out.println(algorithm.sort(cyclic));
 
-        Graph undirected = GraphBuilder
-                .undirected(3)
-                .build();
-        DemoUtils.printHeader("Kahn Topological Sort Undirected", undirected);
-        System.out.println(algorithm.sort(undirected));
+        try {
+            Graph undirected = GraphBuilder
+                    .undirected(3)
+                    .build();
+            DemoUtils.printHeader("Kahn Topological Sort Undirected", undirected);
+            System.out.println(algorithm.sort(undirected));
+        } catch (GraphException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

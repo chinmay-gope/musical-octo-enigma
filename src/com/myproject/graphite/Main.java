@@ -2,6 +2,7 @@ package com.myproject.graphite;
 
 import com.myproject.graphite.model.Graph;
 import com.myproject.graphite.util.GraphBuilder;
+import com.myproject.graphite.util.GraphPrinter;
 
 public class Main {
     static void main() {
@@ -14,6 +15,7 @@ public class Main {
                 .build();
 
         System.out.println("Undirected Adj List : " + graph.getAdjacencyList());
+        GraphPrinter.print(graph);
 
         Graph graph2 = GraphBuilder
                 .directed(4)
@@ -23,5 +25,6 @@ public class Main {
                 .build();
 
         System.out.println("Directed Adj List : " + graph2.getAdjacencyList());
+        GraphPrinter.print(graph2);
     }
 }

@@ -5,9 +5,9 @@ public record Edge(int destination, int weight) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Edge(int destination1, int weight1))) return false;
+        if (!(o instanceof Edge(int dest, int wt))) return false;
 
-        return destination == destination1 && weight == weight1;
+        return destination == dest && weight == wt;
     }
 
     @Override

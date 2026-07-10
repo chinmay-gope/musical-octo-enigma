@@ -1,7 +1,7 @@
 package com.myproject.graphite.model;
 
-import com.myproject.graphite.api.IGraph;
-import com.myproject.graphite.exceptions.InvalidVertexException;
+import com.myproject.graphite.api.algorithms.interfaces.IGraph;
+import com.myproject.graphite.exceptions.validation.InvalidVertexException;
 import com.myproject.graphite.factory.GraphType;
 
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ public abstract class Graph implements IGraph {
 
     protected final int vertices;
     protected final List<List<Edge>> adjacencyList;
+    public static final int UNDIRECTED_GRAPH_DEFAULT_WEIGHT = 1;
 
     protected Graph(int vertices) {
         this.vertices = vertices;
@@ -30,7 +31,7 @@ public abstract class Graph implements IGraph {
 
     @Override
     public void addEdge(int source, int destination) {
-        addEdge(source, destination, 1);
+        addEdge(source, destination, UNDIRECTED_GRAPH_DEFAULT_WEIGHT);
     }
 
     @Override

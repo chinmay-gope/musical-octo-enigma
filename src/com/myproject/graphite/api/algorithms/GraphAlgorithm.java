@@ -1,9 +1,10 @@
 package com.myproject.graphite.api.algorithms;
 
-import com.myproject.graphite.api.IGraph;
-import com.myproject.graphite.exceptions.UnsupportedGraphTypeException;
+import com.myproject.graphite.api.algorithms.interfaces.IGraph;
+import com.myproject.graphite.exceptions.validation.UnsupportedGraphTypeException;
 import com.myproject.graphite.factory.GraphType;
 import com.myproject.graphite.model.Edge;
+import com.myproject.graphite.model.GraphEdge;
 import com.myproject.graphite.util.GraphValidator;
 
 import java.util.ArrayList;
@@ -35,10 +36,6 @@ public abstract class GraphAlgorithm {
         return new ArrayList<>();
     }
 
-    protected Iterable<Edge> neighbours(IGraph graph, int vertex) {
-        return graph.getNeighbours(vertex);
-    }
-
     protected void requireDirectedGraph(IGraph graph) {
         if (graph.getGraphType() != GraphType.DIRECTED) {
             throw new UnsupportedGraphTypeException(
@@ -55,5 +52,24 @@ public abstract class GraphAlgorithm {
                     graph.getGraphType()
             );
         }
+    }
+
+    protected Iterable<Edge> neighbours(IGraph graph, int vertex) {
+        return graph.getNeighbours(vertex);
+    }
+
+    protected List<GraphEdge> getAllEdges(IGraph graph) {
+        List<GraphEdge> edges = new ArrayList<>();
+
+        for (int i = 0; i < graph.getVertices(); i++) {
+            for (Edge edge : neighbours(graph, i)) {
+                edges.add(new GraphEdge(
+                        i,
+                        edge.destination(),
+                        edge.weight()
+                ));
+            }
+        }
+        return edges;
     }
 }
