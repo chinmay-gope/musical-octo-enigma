@@ -31,11 +31,11 @@ public class BellmanFordDemo {
 
         try {
             Graph negativeWeightCycle = GraphBuilder
-                    .directed(0)
-//                    .addEdge(0, 1, 1)
-//                    .addEdge(1, 2, -1)
-//                    .addEdge(2, 3, -1)
-//                    .addEdge(3, 1, -1)
+                    .directed(4)
+                    .addEdge(0, 1, 1)
+                    .addEdge(1, 2, -1)
+                    .addEdge(2, 3, -1)
+                    .addEdge(3, 1, -1)
                     .build();
 
             GraphPrinter.print(negativeWeightCycle);

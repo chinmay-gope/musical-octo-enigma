@@ -42,8 +42,8 @@ public class DijkstraDemo {
         GraphPrinter.print(unreachableVertex);
         DemoUtils.printHeader("Dijkstra Shortest Path for Unreachable Vertex", unreachableVertex);
 
-        ShortestPathResult result2 = algorithm.shortestPath(unreachableVertex, 0);
-        System.out.println(result2);
+        result = algorithm.shortestPath(unreachableVertex, 0);
+        System.out.println(result);
 
         try {
             Graph g = GraphBuilder
@@ -53,8 +53,8 @@ public class DijkstraDemo {
 
             DemoUtils.printHeader("Dijkstra Shortest Path for Negative Weight", g);
 
-            ShortestPathResult result3 = algorithm.shortestPath(g, 0);
-            System.out.println(result3);
+            result = algorithm.shortestPath(g, 0);
+            System.out.println(result);
         } catch (GraphException e) {
             System.err.println(e.getMessage());
         }

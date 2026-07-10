@@ -2,16 +2,21 @@ package com.myproject.graphite.result;
 
 import java.util.List;
 
-public record MSTResult(int cost, List<WeightedEdge> edges) {
+public record MSTResult(int cost, List<MSTEdge> edges) {
     public MSTResult {
         edges = List.copyOf(edges);
     }
 
     @Override
     public String toString() {
-        return "MSTResult{" +
-                "cost=" + cost +
-                ", edges=" + edges +
-                '}';
+        StringBuilder builder = new StringBuilder();
+
+        for (MSTEdge edge : edges) {
+            builder.append(edge).append('\n');
+        }
+
+        builder.append("Cost = ").append(cost);
+
+        return builder.toString();
     }
 }
