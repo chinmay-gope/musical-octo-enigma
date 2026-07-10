@@ -1,6 +1,6 @@
 package com.myproject.graphite.demo;
 
-import com.myproject.graphite.api.IGraph;
+import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 
 public final class DemoUtils {
     private DemoUtils() {

@@ -1,4 +1,4 @@
-package com.myproject.graphite.api;
+package com.myproject.graphite.api.algorithms.interfaces;
 
 import com.myproject.graphite.factory.GraphType;
 import com.myproject.graphite.model.Edge;

@@ -1,6 +1,8 @@
-package com.myproject.graphite.exceptions;
+package com.myproject.graphite.exceptions.cycle;
 
-public class GraphCycleException extends RuntimeException {
+import com.myproject.graphite.exceptions.GraphException;
+
+public class GraphCycleException extends GraphException {
     public GraphCycleException() {
         super("The graph contains one or more cycles.");
     }
