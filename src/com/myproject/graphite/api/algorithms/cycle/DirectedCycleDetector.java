@@ -1,7 +1,7 @@
 package com.myproject.graphite.api.algorithms.cycle;
 
 import com.myproject.graphite.api.IGraph;
-import com.myproject.graphite.api.algorithms.CycleDetectionAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.CycleDetectionAlgorithm;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
 import com.myproject.graphite.model.Edge;
 

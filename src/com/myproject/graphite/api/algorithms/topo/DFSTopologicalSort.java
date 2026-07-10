@@ -1,9 +1,9 @@
 package com.myproject.graphite.api.algorithms.topo;
 
 import com.myproject.graphite.api.IGraph;
-import com.myproject.graphite.api.algorithms.CycleDetectionAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.CycleDetectionAlgorithm;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
-import com.myproject.graphite.api.algorithms.TopologicalAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.TopologicalAlgorithm;
 import com.myproject.graphite.api.algorithms.cycle.DirectedCycleDetector;
 import com.myproject.graphite.exceptions.GraphCycleException;
 import com.myproject.graphite.model.Edge;

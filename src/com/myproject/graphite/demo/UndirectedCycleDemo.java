@@ -1,6 +1,6 @@
 package com.myproject.graphite.demo;
 
-import com.myproject.graphite.api.algorithms.CycleDetectionAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.CycleDetectionAlgorithm;
 import com.myproject.graphite.api.algorithms.cycle.UndirectedCycleDetector;
 import com.myproject.graphite.model.Graph;
 import com.myproject.graphite.util.GraphBuilder;

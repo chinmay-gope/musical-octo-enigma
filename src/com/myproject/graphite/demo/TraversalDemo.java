@@ -1,6 +1,6 @@
 package com.myproject.graphite.demo;
 
-import com.myproject.graphite.api.algorithms.TraversalAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.TraversalAlgorithm;
 import com.myproject.graphite.api.algorithms.traversal.BFS;
 import com.myproject.graphite.api.algorithms.traversal.DFS;
 import com.myproject.graphite.model.Graph;

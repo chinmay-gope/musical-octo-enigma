@@ -2,7 +2,7 @@ package com.myproject.graphite.api.algorithms.traversal;
 
 import com.myproject.graphite.api.IGraph;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
-import com.myproject.graphite.api.algorithms.TraversalAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.TraversalAlgorithm;
 import com.myproject.graphite.model.Edge;
 import com.myproject.graphite.result.TraversalResult;
 
