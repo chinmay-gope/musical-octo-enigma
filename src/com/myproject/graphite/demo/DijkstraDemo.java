@@ -2,6 +2,7 @@ package com.myproject.graphite.demo;
 
 import com.myproject.graphite.api.algorithms.interfaces.ShortestPathAlgorithm;
 import com.myproject.graphite.api.algorithms.shortestpath.Dijkstra;
+import com.myproject.graphite.exceptions.GraphException;
 import com.myproject.graphite.model.Graph;
 import com.myproject.graphite.result.ShortestPathResult;
 import com.myproject.graphite.util.GraphBuilder;
@@ -44,6 +45,18 @@ public class DijkstraDemo {
         ShortestPathResult result2 = algorithm.shortestPath(unreachableVertex, 0);
         System.out.println(result2);
 
-        DemoUtils.printFooter();
+        try {
+            Graph g = GraphBuilder
+                    .directed(3)
+                    .addEdge(0, 2, -2)
+                    .build();
+
+            DemoUtils.printHeader("Dijkstra Shortest Path for Negative Weight", g);
+
+            ShortestPathResult result3 = algorithm.shortestPath(g, 0);
+            System.out.println(result3);
+        } catch (GraphException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

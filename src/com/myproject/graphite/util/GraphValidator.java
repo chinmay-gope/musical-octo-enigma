@@ -2,6 +2,7 @@ package com.myproject.graphite.util;
 
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 import com.myproject.graphite.exceptions.validation.InvalidVertexException;
+import com.myproject.graphite.exceptions.validation.NullGraphException;
 import com.myproject.graphite.model.Edge;
 
 public final class GraphValidator {
@@ -49,7 +50,7 @@ public final class GraphValidator {
 
     public static void validateVertex(IGraph graph, int vertex) {
         if (graph == null) {
-            throw new NullPointerException("Graph cannot be null.");
+            throw new NullGraphException();
         }
 
         if (vertex < 0 || vertex >= graph.getVertices()) {
