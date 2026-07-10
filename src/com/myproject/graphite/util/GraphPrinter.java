@@ -8,12 +8,14 @@ public final class GraphPrinter {
         throw new AssertionError("No GraphPrinter instances for you!");
     }
 
-    public static void print(IGraph graph) {
+    public static void print(IGraph graph, String title) {
+        IO.println(title);
+
         for (int i = 0; i < graph.getVertices(); i++) {
-            IO.println(i + " -> ");
+            IO.print(i + " -> ");
 
             for (Edge edge : graph.getNeighbours(i)) {
-                IO.println(edge + " ");
+                IO.print(edge + " ");
             }
 
             IO.println();

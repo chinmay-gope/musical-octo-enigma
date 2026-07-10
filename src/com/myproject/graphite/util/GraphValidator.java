@@ -1,6 +1,7 @@
 package com.myproject.graphite.util;
 
 import com.myproject.graphite.api.IGraph;
+import com.myproject.graphite.exceptions.InvalidVertexException;
 import com.myproject.graphite.model.Edge;
 
 public final class GraphValidator {
@@ -46,4 +47,13 @@ public final class GraphValidator {
         return false;
     }
 
+    public static void validateVertex(IGraph graph, int vertex) {
+        if (graph == null) {
+            throw new NullPointerException("Graph cannot be null.");
+        }
+
+        if (vertex < 0 || vertex >= graph.getVertices()) {
+            throw new InvalidVertexException(vertex);
+        }
+    }
 }
