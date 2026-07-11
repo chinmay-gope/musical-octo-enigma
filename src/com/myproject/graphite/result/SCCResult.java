@@ -3,6 +3,10 @@ package com.myproject.graphite.result;
 import java.util.List;
 
 public record SCCResult(List<List<Integer>> components) {
+    private static final String RESET = "\u001B[0m";
+    private static final String CYAN_BRIGHT = "\u001B[96m";
+    private static final String MAGENTA_BRIGHT = "\u001B[95m";
+
     public SCCResult {
         components = List.copyOf(components);
     }
@@ -17,15 +21,15 @@ public record SCCResult(List<List<Integer>> components) {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-/*
-        builder.append("Strongly Connected Components\n");
-        builder.append("-----------------------------\n");
-*/
         for (int i = 0; i < components.size(); i++) {
-            builder.append("Component ")
+            builder.append(CYAN_BRIGHT)
+                    .append("Component ")
                     .append(i + 1)
                     .append(": ")
+                    .append(RESET)
+                    .append(MAGENTA_BRIGHT)
                     .append(components.get(i))
+                    .append(RESET)
                     .append('\n');
         }
         return builder.toString();

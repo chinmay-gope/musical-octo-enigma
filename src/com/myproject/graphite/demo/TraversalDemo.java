@@ -23,14 +23,14 @@ public class TraversalDemo {
         TraversalAlgorithm bfs = new BFS();
         TraversalAlgorithm dfs = new DFS();
 
-        DemoUtils.printHeader("Breadth First Search", graph);
+        GraphDemoPrinter.printHeader("Breadth First Search", graph);
         System.out.println(bfs.traverse(graph, 0));
-        DemoUtils.printFooter();
+        GraphDemoPrinter.printFooter();
 
         System.out.println();
 
-        DemoUtils.printHeader("Depth First Search", graph);
+        GraphDemoPrinter.printHeader("Depth First Search", graph);
         System.out.println(dfs.traverse(graph, 0));
-        DemoUtils.printFooter();
+        GraphDemoPrinter.printFooter();
     }
 }

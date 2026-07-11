@@ -27,5 +27,8 @@ public class __ {
         __.$b = 20;
 
         System.out.println("But CANNOT access class level variables like: '_._a' its not allowing");
+
+        System.out.println("\u001B[96mHello\u001B[0m World");
+
     }
 }

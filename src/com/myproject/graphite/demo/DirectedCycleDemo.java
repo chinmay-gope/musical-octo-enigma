@@ -17,7 +17,7 @@ public class DirectedCycleDemo {
                 .addEdge(3, 4)
                 .build();
 
-        DemoUtils.printHeader("Directed Cycle Detection", noCycleGraph);
+        GraphDemoPrinter.printHeader("Directed Cycle Detection", noCycleGraph);
         System.out.println(detector.hasCycle(noCycleGraph));
 
         Graph cycleGraph = GraphBuilder
@@ -28,7 +28,7 @@ public class DirectedCycleDemo {
                 .addEdge(3, 1)
                 .build();
 
-        DemoUtils.printHeader("Directed Cycle Detection", cycleGraph);
+        GraphDemoPrinter.printHeader("Directed Cycle Detection", cycleGraph);
         System.out.println(detector.hasCycle(cycleGraph));
     }
 }

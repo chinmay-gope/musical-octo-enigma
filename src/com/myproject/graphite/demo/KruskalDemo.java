@@ -25,7 +25,7 @@ public class KruskalDemo {
 
         GraphPrinter.printEdges(graph);
         GraphPrinter.print(graph);
-        DemoUtils.printHeader("Kruskal MST", graph);
+        GraphDemoPrinter.printHeader("Kruskal MST", graph);
 
         MSTAlgorithm algorithm = new Kruskal();
 
@@ -39,14 +39,14 @@ public class KruskalDemo {
                 .build();
         GraphPrinter.print(equalWeights);
         MSTResult result = algorithm.findMST(graph, 0);
-        DemoUtils.printHeader("Kruskal MST Equal Weights", graph);
+        GraphDemoPrinter.printHeader("Kruskal MST Equal Weights", graph);
         System.out.println(result);
 
         Graph single = GraphBuilder
                 .undirected(1)
                 .build();
         GraphPrinter.print(single);
-        DemoUtils.printHeader("Kruskal MST Single", graph);
+        GraphDemoPrinter.printHeader("Kruskal MST Single", graph);
         result = algorithm.findMST(single, 0);
         System.out.println(result);
 
@@ -62,8 +62,8 @@ public class KruskalDemo {
                 .addEdge(3, 5, 1)
                 .addEdge(4, 5, 7)
                 .build();
-//        GraphPrinter.printEdges(cycleHeavyGraph);
-        DemoUtils.printHeader("Kruskal MST Cycle Heavy", graph);
+        GraphPrinter.printEdges(cycleHeavyGraph);
+        GraphDemoPrinter.printHeader("Kruskal MST Cycle Heavy", graph);
         result = algorithm.findMST(cycleHeavyGraph, 0);
         System.out.println(result);
 
@@ -74,7 +74,7 @@ public class KruskalDemo {
                     .addEdge(1, 2, 2)
                     .addEdge(3, 4, 1)
                     .build();
-            DemoUtils.printHeader("Kruskal MST Disconnected Graph", graph);
+            GraphDemoPrinter.printHeader("Kruskal MST Disconnected Graph", graph);
             result = algorithm.findMST(disconnectedGraph, 0);
             System.out.println(result);
         } catch (GraphException e) {

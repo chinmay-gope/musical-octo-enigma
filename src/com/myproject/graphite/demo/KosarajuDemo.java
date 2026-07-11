@@ -16,7 +16,7 @@ public class KosarajuDemo {
                 .addEdge(2, 0)
                 .build();
 
-        DemoUtils.printHeader("Kosaraju SCC", graph);
+        GraphDemoPrinter.printHeader("Kosaraju SCC", graph);
         GraphPrinter.print(graph);
 
         SCCAlgorithm algorithm = new Kosaraju();
@@ -33,7 +33,7 @@ public class KosarajuDemo {
                 .addEdge(4, 5, 1)
                 .addEdge(5, 3, 1)   // cycle 2
                 .build();
-        DemoUtils.printHeader("Kosaraju SCC Multiple Disjoint Cycles", graph);
+        GraphDemoPrinter.printHeader("Kosaraju SCC Multiple Disjoint Cycles", graph);
         GraphPrinter.print(graph);
         result = algorithm.findSCCs(graph);
         System.out.println(result);
@@ -45,7 +45,7 @@ public class KosarajuDemo {
                 .addEdge(2, 3, 1)
                 .addEdge(3, 4, 1)
                 .build();
-        DemoUtils.printHeader("Kosaraju SCC Chain with One-Way Links", graph);
+        GraphDemoPrinter.printHeader("Kosaraju SCC Chain with One-Way Links", graph);
         GraphPrinter.print(graph);
         result = algorithm.findSCCs(graph);
         System.out.println(result);
@@ -63,7 +63,7 @@ public class KosarajuDemo {
                 .addEdge(7, 6, 1)   // SCC3
                 .addEdge(7, 5, 1)   // cross edge SCC3 → SCC2
                 .build();
-        DemoUtils.printHeader("Kosaraju SCC Mixed Cycles and Cross Edges", graph);
+        GraphDemoPrinter.printHeader("Kosaraju SCC Mixed Cycles and Cross Edges", graph);
         GraphPrinter.print(graph);
         result = algorithm.findSCCs(graph);
         System.out.println(result);
@@ -77,7 +77,7 @@ public class KosarajuDemo {
                 .addEdge(4, 2, 1)   // SCC2
                 // nodes 5 and 6 isolated
                 .build();
-        DemoUtils.printHeader("Kosaraju SCC Isolated Nodes + Cycles", graph);
+        GraphDemoPrinter.printHeader("Kosaraju SCC Isolated Nodes + Cycles", graph);
         GraphPrinter.print(graph);
         result = algorithm.findSCCs(graph);
         System.out.println(result);

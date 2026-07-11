@@ -17,7 +17,7 @@ public class UndirectedCycleDemo {
                 .addEdge(3, 4)
                 .build();
 
-        DemoUtils.printHeader("Undirected Cycle Detection", noCycleGraph);
+        GraphDemoPrinter.printHeader("Undirected Cycle Detection", noCycleGraph);
         System.out.println(detector.hasCycle(noCycleGraph));
 
         Graph cycleGraph = GraphBuilder
@@ -28,7 +28,7 @@ public class UndirectedCycleDemo {
                 .addEdge(3, 0)
                 .build();
 
-        DemoUtils.printHeader("Undirected Cycle Detection", cycleGraph);
+        GraphDemoPrinter.printHeader("Undirected Cycle Detection", cycleGraph);
         System.out.println(detector.hasCycle(cycleGraph));
     }
 }

@@ -22,7 +22,7 @@ public class PrimDemo {
                 .build();
 
         GraphPrinter.print(graph);
-        DemoUtils.printHeader("Prim MST", graph);
+        GraphDemoPrinter.printHeader("Prim MST", graph);
 
         MSTAlgorithm algorithm = new Prim();
 
@@ -30,7 +30,7 @@ public class PrimDemo {
 
         System.out.println(result);
 
-        DemoUtils.printFooter();
+        GraphDemoPrinter.printFooter();
 
         Graph graph2 = GraphBuilder
                 .undirected(4)
@@ -42,7 +42,7 @@ public class PrimDemo {
                 .build();
 
         GraphPrinter.print(graph2);
-        DemoUtils.printHeader("Prim MST With Multiple Equal Weights", graph2);
+        GraphDemoPrinter.printHeader("Prim MST With Multiple Equal Weights", graph2);
 
         result = algorithm.findMST(graph2, 0);
         System.out.println(result);
@@ -50,7 +50,7 @@ public class PrimDemo {
         Graph graph3 = GraphBuilder
                 .undirected(1)
                 .build();
-        DemoUtils.printHeader("Prim MST With Single Vertex", graph3);
+        GraphDemoPrinter.printHeader("Prim MST With Single Vertex", graph3);
 
         result = algorithm.findMST(graph3, 0);
         System.out.println(result);
@@ -64,7 +64,7 @@ public class PrimDemo {
                 .addEdge(3, 1, -1)
                 .build();
 
-        DemoUtils.printHeader("Prim MST With Negative Weight Cycle", negativeWeightCycle);
+        GraphDemoPrinter.printHeader("Prim MST With Negative Weight Cycle", negativeWeightCycle);
         GraphPrinter.print(negativeWeightCycle);
         result = algorithm.findMST(negativeWeightCycle, 0);
         System.out.println(result);
@@ -78,7 +78,7 @@ public class PrimDemo {
                     .build();
 
             GraphPrinter.print(disconnectedGraph);
-            DemoUtils.printHeader("Prim MST With Disconnected Graph", disconnectedGraph);
+            GraphDemoPrinter.printHeader("Prim MST With Disconnected Graph", disconnectedGraph);
 
             result = algorithm.findMST(disconnectedGraph, 0);
             System.out.println(result);

@@ -20,11 +20,11 @@ public class TopologicalDemo {
 
         GraphPrinter.print(graph);
 
-        DemoUtils.printHeader("DFS Topological Sort", graph);
+        GraphDemoPrinter.printHeader("DFS Topological Sort", graph);
 
         DFSTopologicalSort algorithm = new DFSTopologicalSort();
         System.out.println(algorithm.sort(graph));
-        DemoUtils.printFooter();
+        GraphDemoPrinter.printFooter();
 
         try {
             Graph cyclic = GraphBuilder
@@ -36,7 +36,7 @@ public class TopologicalDemo {
 
             GraphPrinter.print(cyclic);
             System.out.println(algorithm.sort(cyclic));
-            DemoUtils.printHeader("DFS Topological Sort With Cycle", cyclic);
+            GraphDemoPrinter.printHeader("DFS Topological Sort With Cycle", cyclic);
         } catch (GraphException e) {
             System.err.println(e.getMessage());
         }
