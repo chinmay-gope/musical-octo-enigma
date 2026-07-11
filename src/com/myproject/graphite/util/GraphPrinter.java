@@ -24,7 +24,7 @@ public final class GraphPrinter {
         for (int i = 0; i < graph.getVertices(); i++) {
             for (Edge edge : graph.getNeighbours(i)) {
                 System.out.printf(
-                        "%d -> %d (weight=%d)%n",
+                        "%d -> %d (weight = %d)%n",
                         i,
                         edge.destination(),
                         edge.weight()

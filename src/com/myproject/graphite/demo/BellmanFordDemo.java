@@ -19,7 +19,7 @@ public class BellmanFordDemo {
                 .addEdge(3, 1, 1)
                 .build();
 
-        GraphPrinter.print(graph);
+        GraphPrinter.printEdges(graph);
         DemoUtils.printHeader("BellmanFord Shortest Path", graph);
 
         ShortestPathAlgorithm algorithm = new BellmanFord();
@@ -38,11 +38,11 @@ public class BellmanFordDemo {
                     .addEdge(3, 1, -1)
                     .build();
 
-            GraphPrinter.print(negativeWeightCycle);
-            DemoUtils.printHeader("BellmanFord Shortest Path", negativeWeightCycle);
+            GraphPrinter.printEdges(negativeWeightCycle);
+            DemoUtils.printHeader("BellmanFord Shortest Path for negativeWeightCycle", negativeWeightCycle);
 
-            ShortestPathResult result2 = algorithm.shortestPath(negativeWeightCycle, 0);
-            System.out.println(result2);
+            result = algorithm.shortestPath(negativeWeightCycle, 0);
+            System.out.println(result);
         } catch (GraphException e) {
             System.err.println(e.getMessage());
         }

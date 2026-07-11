@@ -18,7 +18,7 @@ public class KahnTopologicalDemo {
                 .addEdge(3, 1)
                 .build();
 
-        GraphPrinter.print(graph);
+        GraphPrinter.printEdges(graph);
 
         DemoUtils.printHeader("Kahn Topological Sort", graph);
 
@@ -34,7 +34,7 @@ public class KahnTopologicalDemo {
                 .addEdge(2, 0)
                 .build();
 
-        GraphPrinter.print(cyclic);
+        GraphPrinter.printEdges(cyclic);
 
         DemoUtils.printHeader("Kahn Topological Sort With Cycle", cyclic);
         System.out.println(algorithm.sort(cyclic));

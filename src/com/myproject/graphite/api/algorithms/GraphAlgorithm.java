@@ -63,6 +63,12 @@ public abstract class GraphAlgorithm {
 
         for (int i = 0; i < graph.getVertices(); i++) {
             for (Edge edge : neighbours(graph, i)) {
+
+                // Skip duplicate edges in undirected graphs.
+                if (graph.getGraphType() == GraphType.UNDIRECTED && i > edge.destination()) {
+                    continue;
+                }
+
                 edges.add(new GraphEdge(
                         i,
                         edge.destination(),

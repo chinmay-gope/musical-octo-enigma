@@ -1,6 +1,7 @@
 package com.myproject.graphite.util;
 
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
+import com.myproject.graphite.exceptions.validation.UnsupportedGraphTypeException;
 import com.myproject.graphite.factory.GraphFactory;
 import com.myproject.graphite.factory.GraphType;
 import com.myproject.graphite.model.Edge;
@@ -23,7 +24,7 @@ public final class GraphUtils {
 
     public static Graph transpose(IGraph graph) {
         if (graph.getGraphType() != GraphType.DIRECTED) {
-            throw new UnsupportedOperationException("Transpose is only supported for directed graphs!");
+            throw new UnsupportedGraphTypeException(graph.getGraphType(), GraphType.DIRECTED);
         }
         Graph reversed = GraphFactory.create(
                 GraphType.DIRECTED,
