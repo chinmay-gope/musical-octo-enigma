@@ -1,7 +1,7 @@
 package com.myproject.graphite.api.algorithms.interfaces;
 
-import java.util.List;
+import com.myproject.graphite.result.SCCResult;
 
 public interface SCCAlgorithm {
-    List<List<Integer>> findSCC(IGraph graph);
+    SCCResult findSCCs(IGraph graph);
 }

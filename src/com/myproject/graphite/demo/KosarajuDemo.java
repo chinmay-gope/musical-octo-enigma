@@ -1,0 +1,85 @@
+package com.myproject.graphite.demo;
+
+import com.myproject.graphite.api.algorithms.connectivity.Kosaraju;
+import com.myproject.graphite.api.algorithms.interfaces.SCCAlgorithm;
+import com.myproject.graphite.model.Graph;
+import com.myproject.graphite.result.SCCResult;
+import com.myproject.graphite.util.GraphBuilder;
+import com.myproject.graphite.util.GraphPrinter;
+
+public class KosarajuDemo {
+    static void main() {
+        Graph graph = GraphBuilder
+                .directed(3)
+                .addEdge(0, 1)
+                .addEdge(1, 2)
+                .addEdge(2, 0)
+                .build();
+
+        DemoUtils.printHeader("Kosaraju SCC", graph);
+        GraphPrinter.print(graph);
+
+        SCCAlgorithm algorithm = new Kosaraju();
+
+        SCCResult result = algorithm.findSCCs(graph);
+        System.out.println(result);
+
+        graph = GraphBuilder
+                .directed(6)
+                .addEdge(0, 1, 1)
+                .addEdge(1, 2, 1)
+                .addEdge(2, 0, 1)   // cycle 1
+                .addEdge(3, 4, 1)
+                .addEdge(4, 5, 1)
+                .addEdge(5, 3, 1)   // cycle 2
+                .build();
+        DemoUtils.printHeader("Kosaraju SCC Multiple Disjoint Cycles", graph);
+        GraphPrinter.print(graph);
+        result = algorithm.findSCCs(graph);
+        System.out.println(result);
+
+        graph = GraphBuilder
+                .directed(5)
+                .addEdge(0, 1, 1)
+                .addEdge(1, 2, 1)
+                .addEdge(2, 3, 1)
+                .addEdge(3, 4, 1)
+                .build();
+        DemoUtils.printHeader("Kosaraju SCC Chain with One-Way Links", graph);
+        GraphPrinter.print(graph);
+        result = algorithm.findSCCs(graph);
+        System.out.println(result);
+
+        graph = GraphBuilder
+                .directed(8)
+                .addEdge(0, 1, 1)
+                .addEdge(1, 2, 1)
+                .addEdge(2, 0, 1)   // SCC1
+                .addEdge(2, 3, 1)
+                .addEdge(3, 4, 1)
+                .addEdge(4, 5, 1)
+                .addEdge(5, 3, 1)   // SCC2
+                .addEdge(6, 7, 1)
+                .addEdge(7, 6, 1)   // SCC3
+                .addEdge(7, 5, 1)   // cross edge SCC3 → SCC2
+                .build();
+        DemoUtils.printHeader("Kosaraju SCC Mixed Cycles and Cross Edges", graph);
+        GraphPrinter.print(graph);
+        result = algorithm.findSCCs(graph);
+        System.out.println(result);
+
+        graph = GraphBuilder
+                .directed(7)
+                .addEdge(0, 1, 1)
+                .addEdge(1, 0, 1)   // SCC1
+                .addEdge(2, 3, 1)
+                .addEdge(3, 4, 1)
+                .addEdge(4, 2, 1)   // SCC2
+                // nodes 5 and 6 isolated
+                .build();
+        DemoUtils.printHeader("Kosaraju SCC Isolated Nodes + Cycles", graph);
+        GraphPrinter.print(graph);
+        result = algorithm.findSCCs(graph);
+        System.out.println(result);
+    }
+}

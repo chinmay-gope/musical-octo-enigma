@@ -23,6 +23,7 @@ public class KruskalDemo {
                 .addEdge(3, 4, 9)
                 .build();
 
+        GraphPrinter.printEdges(graph);
         GraphPrinter.print(graph);
         DemoUtils.printHeader("Kruskal MST", graph);
 
