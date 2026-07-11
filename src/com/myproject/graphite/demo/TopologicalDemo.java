@@ -18,25 +18,23 @@ public class TopologicalDemo {
                 .addEdge(3, 1)
                 .build();
 
-        GraphPrinter.print(graph);
-
         GraphDemoPrinter.printHeader("DFS Topological Sort", graph);
+        GraphPrinter.print(graph);
 
         DFSTopologicalSort algorithm = new DFSTopologicalSort();
         System.out.println(algorithm.sort(graph));
-        GraphDemoPrinter.printFooter();
 
         try {
-            Graph cyclic = GraphBuilder
+            graph = GraphBuilder
                     .directed(3)
                     .addEdge(0, 1)
                     .addEdge(1, 2)
                     .addEdge(2, 0)
                     .build();
 
-            GraphPrinter.print(cyclic);
-            System.out.println(algorithm.sort(cyclic));
-            GraphDemoPrinter.printHeader("DFS Topological Sort With Cycle", cyclic);
+            GraphDemoPrinter.printHeader("DFS Topological Sort With Cycle", graph);
+            System.out.println(algorithm.sort(graph));
+            GraphPrinter.print(graph);
         } catch (GraphException e) {
             System.err.println(e.getMessage());
         }

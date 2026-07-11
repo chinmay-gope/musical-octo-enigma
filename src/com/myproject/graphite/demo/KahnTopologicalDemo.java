@@ -3,7 +3,6 @@ package com.myproject.graphite.demo;
 import com.myproject.graphite.api.algorithms.topo.KahnTopologicalSort;
 import com.myproject.graphite.exceptions.GraphException;
 import com.myproject.graphite.model.Graph;
-import com.myproject.graphite.result.TopologicalSortResult;
 import com.myproject.graphite.util.GraphBuilder;
 import com.myproject.graphite.util.GraphPrinter;
 
@@ -19,14 +18,11 @@ public class KahnTopologicalDemo {
                 .addEdge(3, 1)
                 .build();
 
-        GraphPrinter.printEdges(graph);
-
         GraphDemoPrinter.printHeader("Kahn Topological Sort", graph);
+        GraphPrinter.printEdges(graph);
 
         KahnTopologicalSort algorithm = new KahnTopologicalSort();
         System.out.println(algorithm.sort(graph));
-
-        GraphDemoPrinter.printFooter();
 
         Graph cyclic = GraphBuilder
                 .directed(3)
@@ -35,9 +31,9 @@ public class KahnTopologicalDemo {
                 .addEdge(2, 0)
                 .build();
 
+        GraphDemoPrinter.printHeader("Kahn Topological Sort With Cycle", cyclic);
         GraphPrinter.printEdges(cyclic);
 
-        GraphDemoPrinter.printHeader("Kahn Topological Sort With Cycle", cyclic);
         System.out.println(algorithm.sort(cyclic));
 
         try {

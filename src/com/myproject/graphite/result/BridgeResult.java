@@ -1,34 +1,34 @@
 package com.myproject.graphite.result;
 
+import com.myproject.graphite.model.GraphEdge;
+
 import java.util.List;
 
 import static com.myproject.graphite.result.ResultColors.*;
 
-public record SCCResult(List<List<Integer>> components) {
-
-    public SCCResult {
-        components = List.copyOf(components);
+public record BridgeResult(List<GraphEdge> bridges) {
+    public BridgeResult {
+        bridges = List.copyOf(bridges);
     }
 
     @Override
-    public List<List<Integer>> components() {
-        return components.stream().map(List::copyOf).toList();
+    public List<GraphEdge> bridges() {
+        return List.copyOf(bridges);
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < components.size(); i++) {
+        for (GraphEdge edge : bridges) {
             builder.append(CYAN_BRIGHT)
-                    .append("Component ")
-                    .append(i + 1)
-                    .append(": ")
+                    .append("Bridge: ")
                     .append(RESET)
                     .append(MAGENTA_BRIGHT)
-                    .append(components.get(i))
+                    .append(edge)
                     .append(RESET)
                     .append('\n');
         }
         return builder.toString();
     }
+
 }

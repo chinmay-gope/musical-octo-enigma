@@ -21,8 +21,8 @@ public class PrimDemo {
                 .addEdge(3, 4, 9)
                 .build();
 
-        GraphPrinter.print(graph);
         GraphDemoPrinter.printHeader("Prim MST", graph);
+        GraphPrinter.print(graph);
 
         MSTAlgorithm algorithm = new Prim();
 
@@ -30,9 +30,7 @@ public class PrimDemo {
 
         System.out.println(result);
 
-        GraphDemoPrinter.printFooter();
-
-        Graph graph2 = GraphBuilder
+        graph = GraphBuilder
                 .undirected(4)
                 .addEdge(0, 1, 1)
                 .addEdge(0, 2, 1)
@@ -41,22 +39,22 @@ public class PrimDemo {
                 .addEdge(2, 3, 2)
                 .build();
 
-        GraphPrinter.print(graph2);
-        GraphDemoPrinter.printHeader("Prim MST With Multiple Equal Weights", graph2);
+        GraphDemoPrinter.printHeader("Prim MST With Multiple Equal Weights", graph);
+        GraphPrinter.print(graph);
 
-        result = algorithm.findMST(graph2, 0);
+        result = algorithm.findMST(graph, 0);
         System.out.println(result);
 
-        Graph graph3 = GraphBuilder
+        graph = GraphBuilder
                 .undirected(1)
                 .build();
-        GraphDemoPrinter.printHeader("Prim MST With Single Vertex", graph3);
-
-        result = algorithm.findMST(graph3, 0);
+        GraphDemoPrinter.printHeader("Prim MST With Single Vertex", graph);
+        GraphPrinter.print(graph);
+        result = algorithm.findMST(graph, 0);
         System.out.println(result);
 
 
-        Graph negativeWeightCycle = GraphBuilder
+        graph = GraphBuilder
                 .undirected(4)
                 .addEdge(0, 1, 1)
                 .addEdge(1, 2, -1)
@@ -64,23 +62,23 @@ public class PrimDemo {
                 .addEdge(3, 1, -1)
                 .build();
 
-        GraphDemoPrinter.printHeader("Prim MST With Negative Weight Cycle", negativeWeightCycle);
-        GraphPrinter.print(negativeWeightCycle);
-        result = algorithm.findMST(negativeWeightCycle, 0);
+        GraphDemoPrinter.printHeader("Prim MST With Negative Weight Cycle", graph);
+        GraphPrinter.print(graph);
+        result = algorithm.findMST(graph, 0);
         System.out.println(result);
 
         try {
-            Graph disconnectedGraph = GraphBuilder
+            graph = GraphBuilder
                     .undirected(6)
                     .addEdge(0, 1, 4)
                     .addEdge(1, 2, 2)
                     .addEdge(3, 4, 1)
                     .build();
 
-            GraphPrinter.print(disconnectedGraph);
-            GraphDemoPrinter.printHeader("Prim MST With Disconnected Graph", disconnectedGraph);
+            GraphDemoPrinter.printHeader("Prim MST With Disconnected Graph", graph);
+            GraphPrinter.print(graph);
 
-            result = algorithm.findMST(disconnectedGraph, 0);
+            result = algorithm.findMST(graph, 0);
             System.out.println(result);
 
         } catch (GraphException e) {

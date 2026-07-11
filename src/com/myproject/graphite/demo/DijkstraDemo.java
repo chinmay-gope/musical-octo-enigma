@@ -21,8 +21,8 @@ public class DijkstraDemo {
                 .addEdge(3, 5, 11)
                 .build();
 
-        GraphPrinter.printEdges(graph);
         GraphDemoPrinter.printHeader("Dijkstra Shortest Path", graph);
+        GraphPrinter.printEdges(graph);
 
         ShortestPathAlgorithm algorithm = new Dijkstra();
 
@@ -39,8 +39,8 @@ public class DijkstraDemo {
                 .addEdge(4, 3, 4)
                 .build();
 
-        GraphPrinter.printEdges(unreachableVertex);
         GraphDemoPrinter.printHeader("Dijkstra Shortest Path for Unreachable Vertex", unreachableVertex);
+        GraphPrinter.printEdges(unreachableVertex);
 
         result = algorithm.shortestPath(unreachableVertex, 0);
         System.out.println(result);

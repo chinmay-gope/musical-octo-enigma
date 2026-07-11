@@ -1,9 +1,7 @@
 package com.myproject.graphite.api.algorithms.interfaces;
 
-import com.myproject.graphite.result.WeightedEdge;
-
-import java.util.List;
+import com.myproject.graphite.result.BridgeResult;
 
 public interface BridgeAlgorithm {
-    List<WeightedEdge> findBridges(IGraph graph);
+    BridgeResult findBridges(IGraph graph);
 }

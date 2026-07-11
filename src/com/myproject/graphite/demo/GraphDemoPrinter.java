@@ -2,13 +2,9 @@ package com.myproject.graphite.demo;
 
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 
-public final class GraphDemoPrinter {
+import static com.myproject.graphite.result.ResultColors.*;
 
-    private static final String RESET = "\u001B[0m";
-    private static final String CYAN_BRIGHT = "\u001B[96m";
-    private static final String YELLOW_BRIGHT = "\u001B[93m";
-    private static final String MAGENTA_BRIGHT = "\u001B[95m";
-    private static final String WHITE_BRIGHT = "\u001B[97m";
+public final class GraphDemoPrinter {
 
     private GraphDemoPrinter() {
         throw new AssertionError("No GraphDemoPrinter instances for you!");
