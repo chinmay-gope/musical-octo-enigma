@@ -20,11 +20,15 @@ public record BridgeResult(List<GraphEdge> bridges) {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (GraphEdge edge : bridges) {
+            int source = edge.source();
+            int destination = edge.destination();
             builder.append(CYAN_BRIGHT)
                     .append("Bridge: ")
                     .append(RESET)
                     .append(MAGENTA_BRIGHT)
-                    .append(edge)
+                    .append(source)
+                    .append((" -- "))
+                    .append(destination)
                     .append(RESET)
                     .append('\n');
         }

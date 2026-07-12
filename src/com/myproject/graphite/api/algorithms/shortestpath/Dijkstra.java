@@ -21,7 +21,7 @@ public class Dijkstra extends GraphAlgorithm implements ShortestPathAlgorithm {
             throw new NegativeWeightException("Dijkstra cannot be applied to graphs with negative edge weights.");
         }
 
-        int[] distance = createDistanceArray(graph, Integer.MAX_VALUE);
+        int[] distance = createDistanceArray(graph);
         distance[source] = 0;
 
         PriorityQueue<VertexCost> queue = new PriorityQueue<>();
