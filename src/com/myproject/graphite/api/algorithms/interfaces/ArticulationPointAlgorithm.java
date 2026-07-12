@@ -1,7 +1,7 @@
 package com.myproject.graphite.api.algorithms.interfaces;
 
-import java.util.List;
+import com.myproject.graphite.result.ArticulationPointResult;
 
 public interface ArticulationPointAlgorithm {
-    List<Integer> findArticulationPoints(IGraph graph);
+    ArticulationPointResult findArticulationPoints(IGraph graph);
 }
