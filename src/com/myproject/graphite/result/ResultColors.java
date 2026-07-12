@@ -8,4 +8,5 @@ public interface ResultColors {
     String WHITE = "\u001B[97m";
     String GREEN = "\u001B[92m";
     String RED = "\u001B[91m";
+    String BOLD = "\u001B[1m";
 }
