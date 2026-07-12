@@ -15,7 +15,7 @@ public record ArticulationPointResult(List<Integer> articulationPoints) {
 
     @Override
     public String toString() {
-        return ResultColors.CYAN_BRIGHT + "Articulation Points: " + ResultColors.RESET +
-                ResultColors.MAGENTA_BRIGHT + articulationPoints + ResultColors.RESET;
+        return ResultColors.CYAN + "Articulation Points: " + ResultColors.RESET +
+                ResultColors.MAGENTA + articulationPoints + ResultColors.RESET;
     }
 }

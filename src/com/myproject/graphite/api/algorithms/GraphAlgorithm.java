@@ -32,25 +32,34 @@ public abstract class GraphAlgorithm {
         return distance;
     }
 
+    protected int[][] createDistanceMatrix(IGraph graph) {
+        int V = graph.getVertices();
+        int[][] distance = new int[V][V];
+
+        for (int i = 0; i < V; i++) {
+            Arrays.fill(distance[i], Integer.MAX_VALUE);
+            distance[i][i] = 0;
+
+            for (Edge edge : neighbours(graph, i)) {
+                distance[i][edge.destination()] = edge.weight();
+            }
+        }
+        return distance;
+    }
+
     protected List<Integer> createTraversalList() {
         return new ArrayList<>();
     }
 
     protected void requireDirectedGraph(IGraph graph) {
         if (graph.getGraphType() != GraphType.DIRECTED) {
-            throw new UnsupportedGraphTypeException(
-                    GraphType.DIRECTED,
-                    graph.getGraphType()
-            );
+            throw new UnsupportedGraphTypeException(GraphType.DIRECTED, graph.getGraphType());
         }
     }
 
     protected void requireUndirectedGraph(IGraph graph) {
         if (graph.getGraphType() != GraphType.UNDIRECTED) {
-            throw new UnsupportedGraphTypeException(
-                    GraphType.UNDIRECTED,
-                    graph.getGraphType()
-            );
+            throw new UnsupportedGraphTypeException(GraphType.UNDIRECTED, graph.getGraphType());
         }
     }
 

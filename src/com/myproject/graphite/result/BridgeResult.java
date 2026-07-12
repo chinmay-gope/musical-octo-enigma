@@ -22,10 +22,10 @@ public record BridgeResult(List<GraphEdge> bridges) {
         for (GraphEdge edge : bridges) {
             int source = edge.source();
             int destination = edge.destination();
-            builder.append(CYAN_BRIGHT)
+            builder.append(CYAN)
                     .append("Bridge: ")
                     .append(RESET)
-                    .append(MAGENTA_BRIGHT)
+                    .append(MAGENTA)
                     .append(source)
                     .append((" -- "))
                     .append(destination)
