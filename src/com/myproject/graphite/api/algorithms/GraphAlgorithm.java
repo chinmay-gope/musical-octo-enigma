@@ -26,9 +26,9 @@ public abstract class GraphAlgorithm {
         return new boolean[graph.getVertices()];
     }
 
-    protected int[] createDistanceArray(IGraph graph) {
+    protected int[] createDistanceArray(IGraph graph, int initialValue) {
         int[] distance = new int[graph.getVertices()];
-        Arrays.fill(distance, Integer.MAX_VALUE);
+        Arrays.fill(distance, initialValue);
         return distance;
     }
 

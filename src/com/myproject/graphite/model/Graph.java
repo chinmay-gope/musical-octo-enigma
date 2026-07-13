@@ -3,6 +3,7 @@ package com.myproject.graphite.model;
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 import com.myproject.graphite.exceptions.validation.InvalidVertexException;
 import com.myproject.graphite.factory.GraphType;
+import com.myproject.graphite.util.GraphUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,5 +60,9 @@ public abstract class Graph implements IGraph {
     @Override
     public boolean isEmpty() {
         return vertices == 0;
+    }
+
+    public IGraph transpose(IGraph graph) {
+        return GraphUtils.transpose(graph);
     }
 }

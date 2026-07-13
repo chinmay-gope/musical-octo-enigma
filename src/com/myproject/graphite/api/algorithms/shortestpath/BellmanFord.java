@@ -15,7 +15,7 @@ public class BellmanFord extends GraphAlgorithm implements ShortestPathAlgorithm
         validateGraph(graph);
         validateVertex(graph, source);
 
-        int[] distance = createDistanceArray(graph);
+        int[] distance = createDistanceArray(graph, Integer.MAX_VALUE);
 
         distance[source] = 0;
 
