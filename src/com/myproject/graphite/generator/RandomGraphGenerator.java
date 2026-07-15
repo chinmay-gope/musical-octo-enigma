@@ -200,6 +200,32 @@ public final class RandomGraphGenerator {
         return this;
     }
 
+    public static Graph dag(int vertices) {
+
+        GraphBuilder builder = GraphBuilder.directed(vertices);
+
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+
+        int maxEdges = vertices * (vertices - 1) / 2;
+        int edges = Math.min(vertices * 2, maxEdges);
+
+        Set<String> usedEdges = new HashSet<>();
+
+        while (usedEdges.size() < edges) {
+
+            int source = random.nextInt(vertices - 1);
+            int destination = random.nextInt(source + 1, vertices);
+
+            String key = source + "-" + destination;
+
+            if (usedEdges.add(key)) {
+                builder.addEdge(source, destination, random.nextInt(1, 51));
+            }
+        }
+
+        return builder.build();
+    }
+
 
     private void validate() {
 

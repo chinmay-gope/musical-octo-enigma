@@ -2,9 +2,9 @@ package com.myproject.graphite.result;
 
 import java.util.List;
 
-public record ArticulationPointResult(List<Integer> articulationPoints) {
+public record APResult(List<Integer> articulationPoints) {
 
-    public ArticulationPointResult {
+    public APResult {
         articulationPoints = List.copyOf(articulationPoints);
     }
 

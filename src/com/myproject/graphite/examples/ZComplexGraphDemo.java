@@ -1,8 +1,8 @@
 package com.myproject.graphite.examples;
 
-import com.myproject.graphite.api.algorithms.connectivity.ArticulationPointFinder;
+import com.myproject.graphite.api.algorithms.connectivity.APFinder;
 import com.myproject.graphite.api.algorithms.connectivity.Kosaraju;
-import com.myproject.graphite.api.algorithms.interfaces.ArticulationPointAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.APAlgorithm;
 import com.myproject.graphite.api.algorithms.interfaces.SCCAlgorithm;
 import com.myproject.graphite.api.algorithms.interfaces.ShortestPathAlgorithm;
 import com.myproject.graphite.api.algorithms.shortestpath.BellmanFord;
@@ -10,7 +10,7 @@ import com.myproject.graphite.api.algorithms.shortestpath.Dijkstra;
 import com.myproject.graphite.api.algorithms.topo.KahnTopologicalSort;
 import com.myproject.graphite.exception.GraphException;
 import com.myproject.graphite.model.Graph;
-import com.myproject.graphite.result.ArticulationPointResult;
+import com.myproject.graphite.result.APResult;
 import com.myproject.graphite.result.SCCResult;
 import com.myproject.graphite.result.ShortestPathResult;
 import com.myproject.graphite.util.GraphBuilder;
@@ -64,9 +64,9 @@ public class ZComplexGraphDemo {
         }
 
         try {
-            ArticulationPointAlgorithm ap = new ArticulationPointFinder();
+            APAlgorithm ap = new APFinder();
             ap.findArticulationPoints(complexGraph);
-            ArticulationPointResult apRes = ap.findArticulationPoints(complexGraph);
+            APResult apRes = ap.findArticulationPoints(complexGraph);
             IO.println(apRes);
         } catch (GraphException e) {
             System.err.println("Articulation Points Error: " + e.getMessage());

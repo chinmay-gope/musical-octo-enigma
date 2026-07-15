@@ -1,9 +1,9 @@
 package com.myproject.graphite.examples;
 
-import com.myproject.graphite.api.algorithms.connectivity.ArticulationPointFinder;
-import com.myproject.graphite.api.algorithms.interfaces.ArticulationPointAlgorithm;
+import com.myproject.graphite.api.algorithms.connectivity.APFinder;
+import com.myproject.graphite.api.algorithms.interfaces.APAlgorithm;
 import com.myproject.graphite.model.Graph;
-import com.myproject.graphite.result.ArticulationPointResult;
+import com.myproject.graphite.result.APResult;
 import com.myproject.graphite.util.GraphBuilder;
 import com.myproject.graphite.util.GraphPrinter;
 
@@ -19,9 +19,9 @@ public class ArticulationPointDemo {
         GraphDemoPrinter.printHeader("Articulation Points Linear Graph", graph);
         GraphPrinter.print(graph);
 
-        ArticulationPointAlgorithm algorithm = new ArticulationPointFinder();
+        APAlgorithm algorithm = new APFinder();
 
-        ArticulationPointResult result = algorithm.findArticulationPoints(graph);
+        APResult result = algorithm.findArticulationPoints(graph);
         System.out.println(result);
 
         graph = GraphBuilder

@@ -1,20 +1,20 @@
 package com.myproject.graphite.api.algorithms.connectivity;
 
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
-import com.myproject.graphite.api.algorithms.interfaces.ArticulationPointAlgorithm;
+import com.myproject.graphite.api.algorithms.interfaces.APAlgorithm;
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 import com.myproject.graphite.model.Edge;
-import com.myproject.graphite.result.ArticulationPointResult;
+import com.myproject.graphite.result.APResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticulationPointFinder extends GraphAlgorithm implements ArticulationPointAlgorithm {
+public class APFinder extends GraphAlgorithm implements APAlgorithm {
 
     private int time;
 
     @Override
-    public ArticulationPointResult findArticulationPoints(IGraph graph) {
+    public APResult findArticulationPoints(IGraph graph) {
         validateGraph(graph);
         requireUndirectedGraph(graph);
 
@@ -46,7 +46,7 @@ public class ArticulationPointFinder extends GraphAlgorithm implements Articulat
                 result.add(i);
             }
         }
-        return new ArticulationPointResult(result);
+        return new APResult(result);
     }
 
     private void dfs(
