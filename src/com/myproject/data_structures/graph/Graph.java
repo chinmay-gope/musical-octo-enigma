@@ -174,8 +174,8 @@ public class Graph {
         g.addEdge(1, 3);
         g.addEdge(2, 4);
 
-        // g.addEdge(1, 3, 7);
-        // g.addEdge(2, 4, 2);
+//         g.addEdge(1, 3, 7);
+//         g.addEdge(2, 4, 2);
 
         System.out.print("BFS : ");
         g.bfs(0);

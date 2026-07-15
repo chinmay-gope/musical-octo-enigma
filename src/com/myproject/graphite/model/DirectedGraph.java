@@ -13,6 +13,8 @@ public class DirectedGraph extends Graph {
         validateVertex(destination);
 
         adjacencyList.get(source).add(new Edge(destination, weight));
+        
+        edgeCount++;
     }
 
     @Override

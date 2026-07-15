@@ -1,8 +1,8 @@
 package com.myproject.graphite.util;
 
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
-import com.myproject.graphite.exceptions.validation.InvalidVertexException;
-import com.myproject.graphite.exceptions.validation.NullGraphException;
+import com.myproject.graphite.exception.validation.InvalidVertexException;
+import com.myproject.graphite.exception.validation.NullGraphException;
 import com.myproject.graphite.model.Edge;
 
 public final class GraphValidator {

@@ -3,7 +3,7 @@ package com.myproject.graphite.api.algorithms.shortestpath;
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
 import com.myproject.graphite.api.algorithms.interfaces.ShortestPathAlgorithm;
-import com.myproject.graphite.exceptions.cycle.NegativeCycleException;
+import com.myproject.graphite.exception.cycle.NegativeCycleException;
 import com.myproject.graphite.model.GraphEdge;
 import com.myproject.graphite.result.ShortestPathResult;
 

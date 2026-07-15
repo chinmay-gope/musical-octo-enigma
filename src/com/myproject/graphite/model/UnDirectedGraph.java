@@ -14,6 +14,8 @@ public class UnDirectedGraph extends Graph {
 
         adjacencyList.get(source).add(new Edge(destination, weight));
         adjacencyList.get(destination).add(new Edge(source, weight));
+
+        edgeCount++;
     }
 
     @Override

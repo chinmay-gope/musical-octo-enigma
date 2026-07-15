@@ -1,7 +1,7 @@
 package com.myproject.graphite.util;
 
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
-import com.myproject.graphite.exceptions.validation.UnsupportedGraphTypeException;
+import com.myproject.graphite.exception.validation.UnsupportedGraphTypeException;
 import com.myproject.graphite.factory.GraphFactory;
 import com.myproject.graphite.factory.GraphType;
 import com.myproject.graphite.model.Edge;

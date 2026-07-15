@@ -17,7 +17,11 @@ public interface IGraph {
 
     int getVertices();
 
+    int edgeCount();
+
     boolean isEmpty();
 
     GraphType getGraphType();
+
+    IGraph transpose(IGraph graph);
 }

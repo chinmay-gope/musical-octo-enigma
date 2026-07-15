@@ -9,7 +9,7 @@ public class __ {
     int $b;
 
     static {
-        System.out.println("\nClass name with one '_' is accepting as className.");
+        System.out.println("\nCollege name with one '_' is accepting as className.");
         System.out.println("But cannot execute the code..");
     }
 

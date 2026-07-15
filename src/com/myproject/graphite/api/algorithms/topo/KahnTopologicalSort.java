@@ -3,7 +3,7 @@ package com.myproject.graphite.api.algorithms.topo;
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
 import com.myproject.graphite.api.algorithms.interfaces.TopologicalAlgorithm;
-import com.myproject.graphite.exceptions.cycle.GraphCycleException;
+import com.myproject.graphite.exception.cycle.GraphCycleException;
 import com.myproject.graphite.model.Edge;
 import com.myproject.graphite.result.TopologicalSortResult;
 

@@ -8,6 +8,6 @@ public record MSTEdge(
 
     @Override
     public String toString() {
-        return source + " -> " + destination + " (" + weight + ")";
+        return String.format("%d ──(%d)──> %d", source, weight, destination);
     }
 }

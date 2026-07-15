@@ -9,4 +9,5 @@ public interface ResultColors {
     String GREEN = "\u001B[92m";
     String RED = "\u001B[91m";
     String BOLD = "\u001B[1m";
+    String BLUE = "\u001B[94m";
 }

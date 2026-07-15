@@ -3,7 +3,7 @@ package com.myproject.graphite.api.algorithms.mst;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 import com.myproject.graphite.api.algorithms.interfaces.MSTAlgorithm;
-import com.myproject.graphite.exceptions.validation.GraphDisconnectedException;
+import com.myproject.graphite.exception.validation.GraphDisconnectedException;
 import com.myproject.graphite.model.Edge;
 import com.myproject.graphite.model.MSTNode;
 import com.myproject.graphite.result.MSTEdge;

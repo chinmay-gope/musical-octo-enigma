@@ -3,7 +3,7 @@ package com.myproject.graphite.api.algorithms.shortestpath;
 import com.myproject.graphite.api.algorithms.GraphAlgorithm;
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
 import com.myproject.graphite.api.algorithms.interfaces.ShortestPathAlgorithm;
-import com.myproject.graphite.exceptions.validation.NegativeWeightException;
+import com.myproject.graphite.exception.validation.NegativeWeightException;
 import com.myproject.graphite.model.Edge;
 import com.myproject.graphite.model.VertexCost;
 import com.myproject.graphite.result.ShortestPathResult;
