@@ -226,6 +226,33 @@ public final class RandomGraphGenerator {
         return builder.build();
     }
 
+    public static Graph bipartiteGraph(int vertices) {
+
+        GraphBuilder builder = GraphBuilder.undirected(vertices);
+
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+
+        int leftSize = vertices / 2;
+
+        Set<String> used = new HashSet<>();
+
+        int edges = vertices * 2;
+
+        while (used.size() < edges) {
+
+            int source = random.nextInt(leftSize);
+
+            int destination = random.nextInt(leftSize, vertices);
+
+            String key = source + "-" + destination;
+
+            if (used.add(key)) {
+                builder.addEdge(source, destination);
+            }
+        }
+
+        return builder.build();
+    }
 
     private void validate() {
 

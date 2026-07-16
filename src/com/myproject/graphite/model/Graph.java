@@ -7,6 +7,7 @@ import com.myproject.graphite.util.GraphUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class Graph implements IGraph {
@@ -28,6 +29,33 @@ public abstract class Graph implements IGraph {
     protected void validateVertex(int vertex) {
         if (vertex < 0 || vertex >= vertices) {
             throw new InvalidVertexException(vertex);
+        }
+    }
+
+    @Override
+    public void removeEdge(int source, int destination) {
+        validateVertex(source);
+        validateVertex(destination);
+
+        Iterator<Edge> iterator = adjacencyList.get(source).iterator();
+
+        while (iterator.hasNext()) {
+            if (iterator.next().destination() == destination) {
+                iterator.remove();
+                break;
+            }
+        }
+
+        if (getGraphType() == GraphType.UNDIRECTED) {
+
+            iterator = adjacencyList.get(destination).iterator();
+
+            while (iterator.hasNext()) {
+                if (iterator.next().destination() == source) {
+                    iterator.remove();
+                    break;
+                }
+            }
         }
     }
 

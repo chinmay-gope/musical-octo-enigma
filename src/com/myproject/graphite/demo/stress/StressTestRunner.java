@@ -8,6 +8,7 @@ import com.myproject.graphite.api.algorithms.connectivity.BridgeFinder;
 import com.myproject.graphite.api.algorithms.connectivity.Kosaraju;
 import com.myproject.graphite.api.algorithms.cycle.DirectedCycleDetector;
 import com.myproject.graphite.api.algorithms.cycle.UndirectedCycleDetector;
+import com.myproject.graphite.api.algorithms.euler.Hierholzer;
 import com.myproject.graphite.api.algorithms.interfaces.*;
 import com.myproject.graphite.api.algorithms.mst.Kruskal;
 import com.myproject.graphite.api.algorithms.mst.Prim;
@@ -18,8 +19,12 @@ import com.myproject.graphite.api.algorithms.topo.DFSTopologicalSort;
 import com.myproject.graphite.api.algorithms.topo.KahnTopologicalSort;
 import com.myproject.graphite.api.algorithms.traversal.BFS;
 import com.myproject.graphite.api.algorithms.traversal.DFS;
+import com.myproject.graphite.exception.cycle.GraphCycleException;
+import com.myproject.graphite.exception.validation.GraphDisconnectedException;
 import com.myproject.graphite.factory.GraphFactory;
 import com.myproject.graphite.model.Graph;
+import com.myproject.graphite.result.EulerResult;
+import com.myproject.graphite.validation.EulerValidator;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -50,6 +55,12 @@ public class StressTestRunner {
         stressBridges();
         stressSCCs();
         stressAP();
+
+        // Euler circuit & path
+        stressEulerPath();
+        stressEulerCircuit();
+        stressInvalidEulerGraph();
+        stressDisconnectedEulerGraph();
     }
 
 
@@ -73,6 +84,12 @@ public class StressTestRunner {
                 "DFS Stress Test",
                 StressConfig.DEFAULT_CONFIG,
                 GraphFactory::traversalGraph,
+                graph -> dfs.traverse(graph, randomSource(graph))
+        );
+        StressRunner.run(
+                "DFS Stress Test - (tree)",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::treeGraph,
                 graph -> dfs.traverse(graph, randomSource(graph))
         );
     }
@@ -106,6 +123,12 @@ public class StressTestRunner {
                 GraphFactory::mstGraph,
                 graph -> prim.findMST(graph, randomSource(graph))
         );
+        StressRunner.run(
+                "Prim Stress Test - (tree)",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::treeGraph,
+                graph -> prim.findMST(graph, randomSource(graph))
+        );
     }
 
     private static void stressKruskal() {
@@ -115,6 +138,12 @@ public class StressTestRunner {
                 "Kruskal Stress Test",
                 StressConfig.WEIGHTED_CONFIG,
                 GraphFactory::weightedGraph,
+                graph -> kruskal.findMST(graph, randomSource(graph))
+        );
+        StressRunner.run(
+                "Kruskal Stress Test - (tree)",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::treeGraph,
                 graph -> kruskal.findMST(graph, randomSource(graph))
         );
     }
@@ -160,12 +189,24 @@ public class StressTestRunner {
                 GraphFactory::weightedGraph,
                 bipartite::isBipartite
         );
+        StressRunner.run(
+                "Bipartite Stress Test (bfs - bipartiteGraph)",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::bipartiteGraph,
+                bipartite::isBipartite
+        );
 
         bipartite = new DFSBipartiteChecker();
         StressRunner.run(
                 "Bipartite Stress Test (dfs)",
                 StressConfig.DEFAULT_CONFIG,
                 GraphFactory::weightedGraph,
+                bipartite::isBipartite
+        );
+        StressRunner.run(
+                "Bipartite Stress Test (dfs - bipartiteGraph)",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::bipartiteGraph,
                 bipartite::isBipartite
         );
 
@@ -307,9 +348,88 @@ public class StressTestRunner {
 
         StressRunner.run(
                 "SCC Stress Test (dense)",
-                StressConfig.DEFAULT_CONFIG,
+                StressConfig.WEIGHTED_CONFIG,
                 GraphFactory::directedDenseGraph,
                 scc::findSCCs
+        );
+    }
+
+    private static void stressEulerPath() {
+
+        EulerAlgorithm algorithm = new Hierholzer();
+
+        StressRunner.run(
+                "Euler Path Stress Test",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::eulerPathGraph,
+                graph -> {
+
+                    EulerResult result =
+                            algorithm.findEulerPath(graph);
+
+                    EulerValidator.validate(graph, result);
+                }
+        );
+    }
+
+    private static void stressEulerCircuit() {
+
+        EulerAlgorithm algorithm = new Hierholzer();
+
+        StressRunner.run(
+                "Euler Circuit Stress Test",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::eulerCircuitGraph,
+                graph -> {
+
+                    EulerResult result =
+                            algorithm.findEulerCircuit(graph);
+
+                    EulerValidator.validate(graph, result);
+                }
+        );
+    }
+
+    private static void stressInvalidEulerGraph() {
+
+        EulerAlgorithm algorithm = new Hierholzer();
+
+        StressRunner.run(
+                "Invalid Euler Graph",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::invalidEulerGraph,
+                graph -> {
+
+                    try {
+                        algorithm.findEulerPath(graph);
+                        throw new AssertionError(
+                                "Expected GraphCycleException."
+                        );
+                    } catch (GraphCycleException ignored) {
+                    }
+                }
+        );
+    }
+
+    private static void stressDisconnectedEulerGraph() {
+
+        EulerAlgorithm algorithm = new Hierholzer();
+
+        StressRunner.run(
+                "Disconnected Euler Graph",
+                StressConfig.DEFAULT_CONFIG,
+                GraphFactory::disconnectedEulerGraph,
+                graph -> {
+
+                    try {
+                        algorithm.findEulerPath(graph);
+                        throw new AssertionError(
+                                "Expected GraphDisconnectedException."
+                        );
+                    } catch (GraphDisconnectedException ignored) {
+                    }
+
+                }
         );
     }
 

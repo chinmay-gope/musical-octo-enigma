@@ -11,6 +11,8 @@ public interface IGraph {
 
     void addEdge(int source, int destination, int weight);
 
+    void removeEdge(int source, int destination);
+    
     List<Edge> getNeighbours(int vertex);
 
     List<List<Edge>> getAdjacencyList();

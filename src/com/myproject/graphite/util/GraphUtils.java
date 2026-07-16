@@ -1,11 +1,17 @@
 package com.myproject.graphite.util;
 
 import com.myproject.graphite.api.algorithms.interfaces.IGraph;
+import com.myproject.graphite.api.algorithms.traversal.DFS;
 import com.myproject.graphite.exception.validation.UnsupportedGraphTypeException;
 import com.myproject.graphite.factory.GraphFactory;
 import com.myproject.graphite.factory.GraphType;
 import com.myproject.graphite.model.Edge;
 import com.myproject.graphite.model.Graph;
+import com.myproject.graphite.result.TraversalResult;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public final class GraphUtils {
     private GraphUtils() {
@@ -19,7 +25,24 @@ public final class GraphUtils {
             count += graph.getNeighbours(i).size();
         }
 
+        if (graph.getGraphType() == GraphType.UNDIRECTED) {
+            count /= 2;
+        }
+
         return count;
+    }
+
+    public static boolean hasEdge(
+            IGraph graph,
+            int source,
+            int destination) {
+        for (Edge edge : graph.getNeighbours(source)) {
+            if (edge.destination() == destination) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static Graph transpose(IGraph graph) {
@@ -50,16 +73,62 @@ public final class GraphUtils {
                 graph.getVertices()
         );
 
-        for (int i = 0; i < graph.getVertices(); i++) {
-            for (Edge edge : graph.getNeighbours(i)) {
-                clone.addEdge(
-                        i,
-                        edge.destination(),
-                        edge.weight()
-                );
+        boolean directed = graph.getGraphType() == GraphType.DIRECTED;
+
+        for (int source = 0; source < graph.getVertices(); source++) {
+            for (Edge edge : graph.getNeighbours(source)) {
+                if (directed || source < edge.destination()) {
+                    clone.addEdge(
+                            source,
+                            edge.destination()
+                            , edge.weight()
+                    );
+                }
             }
         }
 
         return clone;
+    }
+
+    public static int degree(IGraph graph, int vertex) {
+        return graph.getNeighbours(vertex).size();
+    }
+
+    public static boolean isConnected(IGraph graph) {
+        int start = -1;
+
+        for (int i = 0; i < graph.getVertices(); i++) {
+            if (degree(graph, i) > 0) {
+                start = i;
+                break;
+            }
+        }
+
+        if (start == -1) {
+            return true;
+        }
+
+        TraversalResult result = new DFS().traverse(graph, start);
+
+        Set<Integer> visited = new HashSet<>(result.traversalOrder());
+
+        for (int i = 0; i < graph.getVertices(); i++) {
+
+            if (degree(graph, i) > 0 && !visited.contains(i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static Edge getFirstNeighbour(IGraph graph, int vertex) {
+        List<Edge> edgeList = graph.getNeighbours(vertex);
+
+        if (edgeList.isEmpty()) {
+            return null;
+        }
+
+        return edgeList.getFirst();
     }
 }
