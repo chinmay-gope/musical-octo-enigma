@@ -1,0 +1,38 @@
+{
+  "items": [
+    {
+      "name": "Burger",
+      "price": 120,
+      "quantity": 3,
+      "amount": 360.0
+    },
+    {
+      "name": "Pizza",
+      "price": 250,
+      "quantity": 3,
+      "amount": 750.0
+    },
+    {
+      "name": "Sandwich",
+      "price": 100,
+      "quantity": 4,
+      "amount": 400.0
+    },
+    {
+      "name": "Pasta",
+      "price": 180,
+      "quantity": 2,
+      "amount": 360.0
+    },
+    {
+      "name": "Cold Drink",
+      "price": 50,
+      "quantity": 2,
+      "amount": 100.0
+    }
+  ],
+  "subtotal": 1970.0,
+  "gst": 98.5,
+  "serviceCharge": 197.0,
+  "total": 2265.5
+}

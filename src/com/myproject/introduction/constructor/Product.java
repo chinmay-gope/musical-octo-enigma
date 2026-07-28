@@ -1,45 +1,52 @@
 package com.myproject.introduction.constructor;
 
 public class Product {
-    String name;
+    String prodID, name, brand;
+    int warrantyInYrs;
     double price;
 
-    Product() {
-    }
-
-    static  class Laptop extends Product {
-        Laptop() {
-        }
-
-        int id;
-        String brand;
-
-        static void main() {
-            Laptop l1 = new Laptop();
-            l1.id = 1;
-            l1.brand = "Laptop";
-
-            System.out.println(l1.id + " " + l1.brand);
-        }
-    }
-
-    Product(String name, double price) {
+    // Parameterized constructor
+    public Product(String prodID, String name, String brand, double price, int warrantyInYrs) {
+        this.prodID = prodID;
         this.name = name;
+        this.brand = brand;
         this.price = price;
+        this.warrantyInYrs = warrantyInYrs;
     }
 
-    void show() {
-        System.out.println("name: " + name);
-        System.out.println("price: " + price);
+    // Copy constructor
+    public Product(Product other, String newProdID) {
+        this.prodID = newProdID; // only prodID is changed
+        this.name = other.name;
+        this.brand = other.brand;
+        this.price = other.price;
+        this.warrantyInYrs = other.warrantyInYrs;
+    }
+
+    // Display method
+    public void display() {
+        System.out.printf(
+                "Product ID: %s\n" +
+                        "Product Name: %s\n" +
+                        "Product Brand: %s\n" +
+                        "Price: %.2f\n" +
+                        "Warranty: %d (in Yrs) \n" +
+                        "______________________________________\n",
+                prodID, name, brand, price, warrantyInYrs
+        );
     }
 
     static void main() {
-        Product p1 = new Product("P1", 50);
-        Product p2 = new Product("P2", 50);
-        Laptop l1 = new Laptop();
+        Product original = new Product("P1001", "Smartphone", "TechBrand", 29999.99, 1);
 
-        p1.show();
-        p2.show();
-        l1.show();
+        // Copy product with new prodID
+        Product copy = new Product(original, "P2001");
+
+        // Display both records
+        System.out.println("Original Product Record:");
+        original.display();
+
+        System.out.println("Copied Product Record:");
+        copy.display();
     }
 }

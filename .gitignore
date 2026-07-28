@@ -29,7 +29,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-final_bill.json
-final_bill.txt
-
 .idea/

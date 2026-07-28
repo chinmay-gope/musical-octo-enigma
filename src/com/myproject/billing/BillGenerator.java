@@ -2,6 +2,7 @@ package com.myproject.billing;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.Map;
 
 public class BillGenerator {
@@ -63,10 +64,10 @@ public class BillGenerator {
 
             sb.append("}\n");
 
-            Path path = Path.of("final_bill.json");
+            Path path = Path.of(getPath(".json"));
             Files.writeString(path, sb.toString());
 
-            System.out.println("Bill saved to " + path.toAbsolutePath());
+            System.out.println("Bill saved to " + path.toFile());
         } catch (Exception e) {
             System.out.println("Error writing JSON bill: " + e.getMessage());
         }
@@ -74,11 +75,15 @@ public class BillGenerator {
 
     public static void writeBillToTextFile(String bill) {
         try {
-            Path path = Path.of("final_bill.txt");
+            Path path = Path.of(getPath(".txt"));
             Files.writeString(path, bill);
-            System.out.println("Bill saved to " + path.toAbsolutePath());
+            System.out.println("Bill saved to " + path.toFile());
         } catch (Exception e) {
             System.out.println("Error writing bill: " + e.getMessage());
         }
+    }
+
+    private static String getPath(String ext) {
+        return "final_bill_" + LocalDate.now() + ext;
     }
 }
