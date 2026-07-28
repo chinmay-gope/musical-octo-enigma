@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ATMSystem {
     final int CORRECT_PIN = 6606;
-    final int DAILY_LIMIT = 10000;
+    double DAILY_LIMIT = 10000;
     final int MAX_VIEWS = 2;
 
     double accountBalance = 20000.0;
@@ -33,16 +33,23 @@ public class ATMSystem {
     }
 
     void withdraw(double amount) {
-        if (amount < DAILY_LIMIT) {
-            if (amount <= accountBalance) {
-                accountBalance = accountBalance - amount;
+
+        if (amount <= accountBalance) {
+            if (amount <= DAILY_LIMIT) {
+
+                DAILY_LIMIT = DAILY_LIMIT - amount; // deduct from limit
+                accountBalance = accountBalance - amount; // deduct from account
+
                 System.out.println("Withdrawal succeeded.");
+
                 System.out.println("Your Balance: " + accountBalance);
+                System.out.println("Remaining daily quota: " + DAILY_LIMIT);
             } else {
-                System.out.println("Insufficient funds.");
+                System.out.println("Daily quota exceeded. You can withdraw only up to $" + DAILY_LIMIT + " today.");
             }
         } else {
-            System.out.println("Amount exceeds daily withdrawal limit.");
+            System.out.println("Insufficient funds.");
+            System.out.println("you only have  $" + accountBalance + " in your account.");
         }
     }
 
