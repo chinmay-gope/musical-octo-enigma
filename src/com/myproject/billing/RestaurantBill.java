@@ -20,6 +20,20 @@ public class RestaurantBill {
         MENU.put("4", new MenuItem("Pasta", 180));
         MENU.put("5", new MenuItem("Cold Drink", 50));
         MENU.put("6", new MenuItem("French Fries", 80));
+        MENU.put("7", new MenuItem("Ice Cream", 90));
+        MENU.put("8", new MenuItem("Chicken Wings", 220));
+        MENU.put("9", new MenuItem("Veg Biryani", 200));
+        MENU.put("10", new MenuItem("Paneer Tikka", 180));
+        MENU.put("11", new MenuItem("Chocolate Cake", 150));
+        MENU.put("12", new MenuItem("Coffee", 70));
+        MENU.put("13", new MenuItem("Tea", 40));
+        MENU.put("14", new MenuItem("Milkshake", 120));
+        MENU.put("15", new MenuItem("Garlic Bread", 110));
+        MENU.put("16", new MenuItem("Nachos", 130));
+        MENU.put("17", new MenuItem("Spring Rolls", 140));
+        MENU.put("18", new MenuItem("Grilled Sandwich", 160));
+        MENU.put("19", new MenuItem("Soup", 100));
+        MENU.put("20", new MenuItem("Donut", 60));
     }
 
     static void main() {
