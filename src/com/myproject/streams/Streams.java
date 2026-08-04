@@ -12,7 +12,7 @@ public class Streams {
 
         List<String> list = fruits.stream().map(String::toUpperCase).toList();
 
-        //  numbers.stream().map(Integer::valueOf).forEach(System.out::print);
+        numbers.stream().map(Integer::valueOf).forEach(System.out::print);
         System.out.println(numbers.stream().map(Integer::valueOf).reduce(0, Integer::sum));
 
         numbers.stream().map(Integer::valueOf).filter(n -> n % 2 == 0).forEach(System.out::println);

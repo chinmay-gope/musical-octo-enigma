@@ -2,7 +2,7 @@ package com.myproject.data_structures.sorting;
 
 import java.util.Arrays;
 
-public class SelectionSort {
+public class SelectionSort implements Sort {
     static void main() {
         int[] arr = {64, 25, 12, 22, 11};
 
@@ -30,5 +30,15 @@ public class SelectionSort {
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Selection Sort";
+    }
+
+    @Override
+    public void sort(int[] array) {
+        selectionSort(array);
     }
 }

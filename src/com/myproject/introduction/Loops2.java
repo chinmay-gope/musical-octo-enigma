@@ -23,10 +23,10 @@ public class Loops2 {
         int i = 0;
         for (i = -10; i < 10; i++) ;
         System.out.println("for " + i);
-        System.out.println("for " + i);
-        System.out.println("for " + i);
         {
+            System.out.println("for " + i);
             i++;
+            System.out.println("for " + i);
         }
         System.out.println("Loops2.meth1 : " + i);
     }
@@ -40,15 +40,6 @@ public class Loops2 {
         System.out.println("Loops2.meth2 : " + i);
     }
 
-    void meth10() {
-        int i = 0;
-        for (i = 12; i < 10; i++) ;
-        {
-            i++;
-        }
-        System.out.println("Loops2.meth10 : " + i);
-    }
-
     void meth3() {
         int i = 0;
         for (i = -10; i < -8; i++) ;
@@ -56,15 +47,6 @@ public class Loops2 {
             i++;
         }
         System.out.println("Loops2.meth3 : " + i);
-    }
-
-    void meth11() {
-        int i = 0;
-        for (i = -10; i > -8; i++) ;
-        {
-            i++;
-        }
-        System.out.println("Loops2.meth11 : " + i);
     }
 
     void meth4() {
@@ -75,17 +57,6 @@ public class Loops2 {
         }
         System.out.println("Loops2.meth4 : " + i);
     }
-
-    void meth12() {
-        int i = 0;
-        for (i = -10; i < -8; i++) ;
-        {
-            i++; //-7
-//            i--; -9
-        }
-        System.out.println("Loops2.meth12 : " + i);
-    }
-
 
     void meth5() {
         int i = 0;
@@ -103,33 +74,6 @@ public class Loops2 {
             i++;
         }
         System.out.println("Loops2.meth6 : " + i);
-    }
-
-    void meth13() {
-        int i = 0;
-        for (i = 1; i < ++i; i--) ;
-        {
-            i++;
-        }
-        System.out.println("Loops2.meth13 : " + i);
-    }
-
-    void meth14() {
-        int i = 0;
-        for (i = 1; i < --i; i--) ;
-        {
-            i++;
-        }
-        System.out.println("Loops2.meth14 : " + i);
-    }
-
-    void meth15() {
-        int i = 0;
-        for (i = 1; i > --i; i--) ;
-        {
-            i++;
-        }
-        System.out.println("Loops2.meth15 : " + i);
     }
 
 
@@ -161,11 +105,66 @@ public class Loops2 {
         }
         System.out.println("Loops2.meth9 : " + i);
     }
+
+    void meth11() {
+        int i = 0;
+        for (i = -10; i > -8; i++) ;
+        {
+            i++;
+        }
+        System.out.println("Loops2.meth11 : " + i);
+    }
+
+    void meth12() {
+        int i = 0;
+        for (i = -10; i < -8; i++) ;
+        {
+            i++; //-7
+//            i--; -9
+        }
+        System.out.println("Loops2.meth12 : " + i);
+    }
+
+    void meth10() {
+        int i = 0;
+        for (i = 12; i < 10; i++) ;
+        {
+            i++;
+        }
+        System.out.println("Loops2.meth10 : " + i);
+    }
+
+    void meth13() {
+        int i = 0;
+        for (i = 1; i < ++i; i--) ;
+        {
+            i++;
+        }
+        System.out.println("Loops2.meth13 : " + i);
+    }
+
+    void meth14() {
+        int i = 0;
+        for (i = 1; i < --i; i--) ;
+        {
+            i++;
+        }
+        System.out.println("Loops2.meth14 : " + i);
+    }
+
+    void meth15() {
+        int i = 0;
+        for (i = 1; i > --i; i--) ;
+        {
+            i++;
+        }
+        System.out.println("Loops2.meth15 : " + i);
+    }
 }
 
 class LoopCases {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         standardIncreasing();
         standardDecreasing();
         emptyBody();
@@ -225,7 +224,7 @@ class LoopCases {
 
     static void postIncrementCondition() {
         int i = 1;
-        for (; i < i++; ) {
+        while (i < i++) {
             System.out.println("postIncrementCondition: " + i);
             if (i > 5) break; // safety
         }
@@ -234,7 +233,7 @@ class LoopCases {
 
     static void preIncrementCondition() {
         int i = 1;
-        for (; i < ++i; ) {
+        while (i < ++i) {
             System.out.println("preIncrementCondition: " + i);
             if (i > 5) break; // safety
         }

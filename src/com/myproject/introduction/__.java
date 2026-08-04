@@ -1,4 +1,4 @@
-package com.myproject.streams;
+package com.myproject.introduction;
 
 public class __ {
     __() {

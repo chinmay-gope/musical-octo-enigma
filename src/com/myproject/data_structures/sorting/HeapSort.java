@@ -2,11 +2,10 @@ package com.myproject.data_structures.sorting;
 
 import java.util.Arrays;
 
-public class HeapSort {
+public class HeapSort implements Sort {
 
     static void main() {
         int[] arr = {12, 11, 13, 5, 6, 7};
-        int n = arr.length;
 
         heapSort(arr);
 
@@ -49,8 +48,13 @@ public class HeapSort {
         }
     }
 
-    static void printArray(int[] arr) {
-        for (int j : arr) System.out.print(j + " ");
-        System.out.println();
+    @Override
+    public String getName() {
+        return "Heap Sort";
+    }
+
+    @Override
+    public void sort(int[] array) {
+        heapSort(array);
     }
 }

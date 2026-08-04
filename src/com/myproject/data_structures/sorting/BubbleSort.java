@@ -2,7 +2,7 @@ package com.myproject.data_structures.sorting;
 
 import java.util.Arrays;
 
-public class BubbleSort {
+public class BubbleSort implements Sort {
 
     static void main() {
         int[] arr = {4, 2, 8, 9, -1, 0};
@@ -32,5 +32,15 @@ public class BubbleSort {
                 break;
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Bubble Sort";
+    }
+
+    @Override
+    public void sort(int[] array) {
+        bubbleSort(array);
     }
 }

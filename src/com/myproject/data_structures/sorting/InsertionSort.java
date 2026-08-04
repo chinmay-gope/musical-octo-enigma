@@ -2,7 +2,7 @@ package com.myproject.data_structures.sorting;
 
 import java.util.Arrays;
 
-public class InsertionSort {
+public class InsertionSort implements Sort {
     static void main() {
         int[] arr = {4, 2, 8, 9, -1, 0};
 
@@ -25,5 +25,15 @@ public class InsertionSort {
 
             arr[j + 1] = current;
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Insertion Sort";
+    }
+
+    @Override
+    public void sort(int[] array) {
+        insertionSort(array);
     }
 }

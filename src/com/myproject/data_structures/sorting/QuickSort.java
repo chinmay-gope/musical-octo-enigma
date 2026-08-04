@@ -1,47 +1,63 @@
 package com.myproject.data_structures.sorting;
 
-import java.util.Arrays;
-
-public class QuickSort {
-    static void main() {
-        int[] arr = {4, 2, 8, 1, 5};
-
-        quickSort(arr, 0, arr.length - 1);
-
-        System.out.println(Arrays.toString(arr));
-    }
+public class QuickSort implements Sort {
 
     private static void quickSort(int[] arr, int low, int high) {
 
-        if (low < high) {
+        while (low < high) {
 
-            int pivotIndex = partition(arr, low, high);
+            int pivot = partition(arr, low, high);
 
-            quickSort(arr, low, pivotIndex - 1);
-            quickSort(arr, pivotIndex + 1, high);
+            // Left partition is smaller
+            if (pivot - low < high - pivot) {
+
+                quickSort(arr, low, pivot - 1);
+
+                low = pivot + 1;      // continue with right partition
+            }
+            // Right partition is smaller
+            else {
+
+                quickSort(arr, pivot + 1, high);
+
+                high = pivot - 1;     // continue with left partition
+            }
         }
     }
 
     private static int partition(int[] arr, int low, int high) {
 
-        int pivot = arr[high]; // last element as pivot
+        int pivot = arr[high];
+
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
 
             if (arr[j] <= pivot) {
                 i++;
-
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                swap(arr, i, j);
             }
         }
 
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
+        swap(arr, i + 1, high);
 
         return i + 1;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    @Override
+    public String getName() {
+        return "Quick Sort";
+    }
+
+    @Override
+    public void sort(int[] array) {
+        quickSort(array, 0, array.length - 1);
     }
 }
