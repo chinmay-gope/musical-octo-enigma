@@ -1,7 +1,6 @@
 package com.myproject.data_structures.sorting;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Random;
 
 public class SortSuite {
@@ -11,10 +10,19 @@ public class SortSuite {
 
     static void main(String[] args) {
 
-        Sort[] algorithms = {new BubbleSort(), new SelectionSort(), new InsertionSort(), new MergeSort(), new QuickSort(), new DualPivotQuickSort(), new HeapSort()};
+        Sort[] algorithms = {new BubbleSort(), new SelectionSort(), new InsertionSort(),
+                new MergeSort(), new QuickSort(), new DualPivotQuickSort(), new HeapSort()};
 
-        int[] sizes = {100, 500, 1_000, 2_500, 5_000, 10_000, 25_000};
-//                50_000, 100_000};
+        int[] sizes = {100, 500, 1_000, 2_500, 5_000, 10_000, 25_000, 50_000, 100_000};
+
+        System.out.println("==============================================================");
+        System.out.println("            SORTING ALGORITHM BENCHMARK SUITE");
+        System.out.println("==============================================================");
+        System.out.println("Java Version : " + System.getProperty("java.version"));
+        System.out.println("Warmups      : " + WARMUP);
+        System.out.println("Iterations   : " + ITERATIONS);
+        System.out.println("Algorithms   : " + algorithms.length);
+        System.out.println("==============================================================");
 
         for (int size : sizes) {
 
@@ -35,31 +43,32 @@ public class SortSuite {
         System.out.println("--------------------------------------------------------------");
 
         Result[] results = new Result[algorithms.length];
+
         int index = 0;
 
         for (Sort algorithm : algorithms) {
-            System.out.println("Running: " + algorithm.getName());
 
-            // Skip slow algorithms for large arrays
-            if ((original.length > 10_000) && (
-                    algorithm instanceof BubbleSort
-                            || algorithm instanceof SelectionSort
-                            || algorithm instanceof InsertionSort)) {
+            String reason = skipReason(algorithm, dataset, original.length);
 
-                results[index++] = new Result(algorithm.getName(), -1, true);
+            if (reason != null) {
+
+                results[index++] = new Result(algorithm.getName(), -1, false, reason);
 
                 continue;
             }
 
+            System.out.println("Running : " + algorithm.getName());
+
             // Warmup
+
             for (int i = 0; i < WARMUP; i++) {
+
                 int[] copy = Arrays.copyOf(original, original.length);
+
                 algorithm.sort(copy);
             }
 
             long total = 0;
-
-            boolean sorted = true;
 
             for (int i = 0; i < ITERATIONS; i++) {
 
@@ -71,19 +80,38 @@ public class SortSuite {
 
                 long end = System.nanoTime();
 
-                total += end - start;
+                if (!isSorted(copy)) {
 
-                sorted &= isSorted(copy);
+                    throw new IllegalStateException(algorithm.getName() + " produced an incorrect result.");
+                }
+
+                total += end - start;
             }
 
-            double avgMs = total / (double) ITERATIONS / 1_000_000.0;
+            double average = total / (double) ITERATIONS / 1_000_000.0;
 
-            results[index++] = new Result(algorithm.getName(), avgMs, sorted);
+            results[index++] = new Result(algorithm.getName(), average, true, "Completed");
         }
 
-        Arrays.sort(results, Comparator.comparingDouble(Result::time));
+        Arrays.sort(results, (a, b) -> {
 
-        System.out.printf("%-5s %-25s %-12s %-10s%n", "Rank", "Algorithm", "Avg(ms)", "Sorted");
+            if (a.time() < 0 && b.time() < 0) return 0;
+
+            if (a.time() < 0) return 1;
+
+            if (b.time() < 0) return -1;
+
+            return Double.compare(a.time(), b.time());
+        });
+
+        printResults(results);
+    }
+
+    private static void printResults(Result[] results) {
+
+        System.out.printf("%-5s %-25s %-12s %-10s %-35s%n", "Rank", "Algorithm", "Avg(ms)", "Sorted", "Status");
+
+        System.out.println("---------------------------------------------------------------------------------------------");
 
         int rank = 1;
 
@@ -91,20 +119,45 @@ public class SortSuite {
 
             if (result.time() < 0) {
 
-                System.out.printf("%-5s %-25s %-12s %-10s%n", "-", result.algorithm(), "Skipped", "-");
+                System.out.printf("%-5s %-25s %-12s %-10s %-35s%n", "-", result.algorithm(), "Skipped", "-", result.reason());
 
             } else {
 
-                System.out.printf("%-5d %-25s %-12.3f %-10s%n", rank++, result.algorithm(), result.time(), result.sorted() ? "Yes" : "No");
+                System.out.printf("%-5d %-25s %-12.3f %-10s %-35s%n", rank++, result.algorithm(), result.time(), result.sorted() ? "Yes" : "No", result.reason());
             }
         }
+    }
+
+    private static String skipReason(Sort algorithm, String dataset, int size) {
+
+        // O(n²) algorithms
+        if (size > 10_000 && (algorithm instanceof BubbleSort || algorithm instanceof SelectionSort || algorithm instanceof InsertionSort)) {
+
+            return "Quadratic complexity";
+        }
+
+        // Classic Quick Sort
+        if (size > 25_000 && ("Sorted".equals(dataset) || "Reverse".equals(dataset)) && algorithm instanceof QuickSort) {
+
+            return "Worst-case pivot selection";
+        }
+
+        // Textbook Dual Pivot Quick Sort
+        if (size > 50_000 && ("Sorted".equals(dataset) || "Reverse".equals(dataset)) && algorithm instanceof DualPivotQuickSort) {
+
+            return "Non-optimized pivot selection";
+        }
+
+        return null;
     }
 
     private static boolean isSorted(int[] array) {
 
         for (int i = 1; i < array.length; i++) {
 
-            if (array[i - 1] > array[i]) return false;
+            if (array[i - 1] > array[i]) {
+                return false;
+            }
         }
 
         return true;
@@ -114,35 +167,37 @@ public class SortSuite {
 
         Random random = new Random();
 
-        int[] arr = new int[size];
+        int[] array = new int[size];
 
-        for (int i = 0; i < size; i++)
-            arr[i] = random.nextInt(size);
+        for (int i = 0; i < size; i++) {
+            array[i] = random.nextInt(size);
+        }
 
-        return arr;
+        return array;
     }
 
     private static int[] sortedArray(int size) {
 
-        int[] arr = new int[size];
+        int[] array = new int[size];
 
-        for (int i = 0; i < size; i++)
-            arr[i] = i;
+        for (int i = 0; i < size; i++) {
+            array[i] = i;
+        }
 
-        return arr;
+        return array;
     }
 
     private static int[] reverseArray(int size) {
 
-        int[] arr = new int[size];
+        int[] array = new int[size];
 
-        for (int i = 0; i < size; i++)
-            arr[i] = size - i;
+        for (int i = 0; i < size; i++) {
+            array[i] = size - i;
+        }
 
-        return arr;
+        return array;
     }
 
-    private record Result(String algorithm, double time, boolean sorted) {
+    private record Result(String algorithm, double time, boolean sorted, String reason) {
     }
-
 }
