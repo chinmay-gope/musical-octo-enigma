@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Loops {
     static void main() {
         Scanner sc = new Scanner(System.in);
-//
+
         System.out.println("Enter a number (n th odd number)");
         int n = sc.nextInt();
         int k = findNthOddNumber(n);
@@ -42,7 +42,20 @@ public class Loops {
             System.out.println("The number is not happy");
         }
 
-        sc.close();
+
+        System.out.print("Enter a isNeonNumber: ");
+        n = sc.nextInt();
+        System.out.println(isNeonNumber(n));
+        System.out.println(isNeonNumber(19));
+
+        System.out.print("Enter a Decimal Number: ");
+        n = sc.nextInt();
+        String bin = decimalToBinary(n);
+        System.out.println("Binary of " + n + " is : " + bin);
+
+        System.out.print("Enter a Binary Number: ");
+        n = sc.nextInt();
+        System.out.println(binaryToDecimal2(n));
     }
 
     public static void swapFirstLastDigit(int num) {
@@ -121,6 +134,67 @@ public class Loops {
         } while (slow != fast);
 
         return slow == 1;
+    }
+
+    public static boolean isNeonNumber(int num) {
+        int sq = num * num;
+        int sum = 0;
+
+        while (sq > 0) {
+            sum += sq % 10;
+            sq /= 10;
+        }
+
+        return sum == num;
+    }
+
+    public static String decimalToBinary(int num) {
+        StringBuilder binary = new StringBuilder();
+
+        while (num > 0) {
+
+            int r = num % 2;
+            num = num / 2;
+            binary.insert(0, r);
+        }
+
+        return binary.toString();
+    }
+
+    public static int binaryToDecimal(int num) {
+        int decimal = 0;
+        int base = 1; // 2^0
+
+        while (num > 0) {
+            int digit = num % 10;
+            num = num / 10;
+
+            decimal += digit * base;
+            base = base * 2;
+        }
+
+        return decimal;
+    }
+
+    public static int binaryToDecimal2(int num) {
+        String numStr = Integer.toString(num);
+
+        int strLen = numStr.length();
+        int sum = 0;
+
+        for (int i = 0; i < strLen; i++) {
+
+            if (numStr.charAt(i) != '0' && numStr.charAt(i) != '1') {
+                System.out.println(numStr + " is a Invalid binary format");
+                System.exit(0);
+            }
+
+            if (numStr.charAt(i) == '1') {
+                sum = (int) (sum + Math.pow(2, strLen - i - 1));
+            }
+        }
+
+        return sum;
     }
 
 
