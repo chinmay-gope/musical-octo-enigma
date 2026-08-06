@@ -43,6 +43,13 @@
       </value>
     </option>
   </component>
+  <component name="PrintToLogpointModuleInspectionState">
+    <option name="disabledModuleNames">
+      <set>
+        <option value="MyProject" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

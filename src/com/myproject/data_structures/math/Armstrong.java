@@ -6,7 +6,10 @@ public class Armstrong {
         int original = n;
 
         int sum = 0;
-        int digitCount = String.valueOf(n).length();
+
+        String string = Integer.toString(n);
+        int digitCount = string.length();
+
 //        int digitCount = (int) Math.log10(n) + 1;
 
         while (n != 0) {

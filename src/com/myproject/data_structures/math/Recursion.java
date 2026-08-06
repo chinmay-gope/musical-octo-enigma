@@ -1,9 +1,28 @@
 package com.myproject.data_structures.math;
 
-
 public class Recursion {
     static void main() {
+        Recursion r = new Recursion();
 
+        r.print(5);
+        System.out.println("---");
+        r.even(8);
+        System.out.println("---");
+        r.print2(5);
+        System.out.println("---");
+        r.odd(3);
+        System.out.println("---");
+        System.out.println(r.gcd(48, 18));
+        System.out.println("---");
+        System.out.println(r.fib(7));
+        System.out.println("---");
+        r.reverse(6);
+        System.out.println("---");
+        r.print2(5);
+        System.out.println("---");
+        System.out.println(r.f(95));
+        System.out.println("---");
+        r.preorder(new Node());
     }
 
     // Direct Recursion
@@ -16,6 +35,7 @@ public class Recursion {
 
     // Mutual Recursion
     void even(int n) {
+        System.out.println("even(" + n + ")");
         if (n == 0) {
             System.out.println("Even");
             return;
@@ -24,7 +44,8 @@ public class Recursion {
     }
 
     void odd(int n) {
-        if (n == 0) {
+        System.out.println("odd(" + n + ")");
+        if (n == 1) {
             System.out.println("Odd");
             return;
         }
@@ -62,6 +83,7 @@ public class Recursion {
 
     void reverse(int n) {
         if (n == 0) return;
+        System.out.print(n + " ");
         reverse(n - 1);
     }
 
@@ -86,6 +108,10 @@ public class Recursion {
     private static class Node {
         Node left;
         Node right;
+
+        Node() {
+            System.out.println("Node created");
+        }
     }
 
 }
