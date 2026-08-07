@@ -6,8 +6,33 @@ public class Loops {
     static void main() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter a number (n th odd number)");
+        System.out.print("Enter a isHappyNumber: ");
         int n = sc.nextInt();
+        boolean isHappy = isHappy(n);
+
+        if (isHappy) {
+            System.out.println("The number is happy");
+        } else {
+            System.out.println("The number is not happy");
+        }
+
+
+        System.out.print("Enter a isNeonNumber: ");
+        n = sc.nextInt();
+        System.out.println(isNeonNumber(n));
+        System.out.println(isNeonNumber(19));
+
+        System.out.print("Enter a Decimal Number: ");
+        n = sc.nextInt();
+        String bin = decimalToBinary(n);
+        System.out.println("Binary of " + n + " is : " + bin);
+
+        System.out.print("Enter a Binary Number: ");
+        n = sc.nextInt();
+
+        System.out.println("Decimal2 of " + n + " is : " + binaryToDecimal(String.valueOf(n)));
+
+        System.out.println("Enter a number (n th odd number)");
         int k = findNthOddNumber(n);
 
         System.out.println(k);
@@ -31,31 +56,6 @@ public class Loops {
 
         swapFirstLastDigit(n);
         swapFirstLastDigitArithmetic(n);
-
-        System.out.print("Enter a isHappyNumber: ");
-        n = sc.nextInt();
-        boolean isHappy = isHappy(n);
-
-        if (isHappy) {
-            System.out.println("The number is happy");
-        } else {
-            System.out.println("The number is not happy");
-        }
-
-
-        System.out.print("Enter a isNeonNumber: ");
-        n = sc.nextInt();
-        System.out.println(isNeonNumber(n));
-        System.out.println(isNeonNumber(19));
-
-        System.out.print("Enter a Decimal Number: ");
-        n = sc.nextInt();
-        String bin = decimalToBinary(n);
-        System.out.println("Binary of " + n + " is : " + bin);
-
-        System.out.print("Enter a Binary Number: ");
-        n = sc.nextInt();
-        System.out.println(binaryToDecimal2(n));
     }
 
     public static void swapFirstLastDigit(int num) {
@@ -110,7 +110,7 @@ public class Loops {
                 + middlePart * 10
                 + firstDigit;
 
-        System.out.println("Output: " + firstLastSwapped);
+        System.out.println("firstLastSwapped: " + firstLastSwapped);
     }
 
 
@@ -161,7 +161,7 @@ public class Loops {
         return binary.toString();
     }
 
-    public static int binaryToDecimal(int num) {
+/*    public static int binaryToDecimal2(int num) {
         int decimal = 0;
         int base = 1; // 2^0
 
@@ -174,22 +174,19 @@ public class Loops {
         }
 
         return decimal;
-    }
+    }*/
 
-    public static int binaryToDecimal2(int num) {
-        String numStr = Integer.toString(num);
-
-        int strLen = numStr.length();
-        int sum = 0;
+    public static int binaryToDecimal(String num) {
+        int strLen = num.length(), sum = 0;
 
         for (int i = 0; i < strLen; i++) {
 
-            if (numStr.charAt(i) != '0' && numStr.charAt(i) != '1') {
-                System.out.println(numStr + " is a Invalid binary format");
-                System.exit(0);
+            if (num.charAt(i) != '0' && num.charAt(i) != '1') {
+                System.out.println(num + " is a Invalid binary format");
+                return -1;
             }
 
-            if (numStr.charAt(i) == '1') {
+            if (num.charAt(i) == '1') {
                 sum = (int) (sum + Math.pow(2, strLen - i - 1));
             }
         }
