@@ -1,5 +1,7 @@
 package com.myproject.pattern;
 
+import java.util.Scanner;
+
 public class Patterns {
 
     void solidRectangle(int n, int m) {
@@ -110,27 +112,48 @@ public class Patterns {
     }
 
     void main() {
-        butterfly(4);
-        System.out.println();
-        
-        solidRectangle(3, 5);
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter row value (Butterfly): ");
+        int N = sc.nextInt();
+        butterfly(N);
         System.out.println();
 
-        hollowRectangle(5, 4);
+        System.out.println("Enter n,m value (Solid Rectangle): ");
+        N = sc.nextInt();
+        int M = sc.nextInt();
+        solidRectangle(N, M);
         System.out.println();
 
-        halfPyramid(3);
+        System.out.println("Enter n,m value (Hollow Rectangle): ");
+        N = sc.nextInt();
+        M = sc.nextInt();
+        hollowRectangle(N, M);
         System.out.println();
 
-        invertedHalfPyramidRotated(4);
+        System.out.println("Enter n value (Half Rectangle): ");
+        N = sc.nextInt();
+        halfPyramid(N);
         System.out.println();
 
-        invertedTriangle(4);
+        System.out.println("Enter n value (Inverted Half Rectangle): ");
+        N = sc.nextInt();
+        invertedHalfPyramidRotated(N);
         System.out.println();
 
-        invertedHalfPyramid(4);
+        System.out.println("Enter n value (Inverted Triangle): ");
+        N = sc.nextInt();
+        invertedTriangle(N);
         System.out.println();
 
-        invertedTriangleInt(4);
+
+        System.out.println("Enter n value (Inverted Half Triangle): ");
+        N = sc.nextInt();
+        invertedHalfPyramid(N);
+        System.out.println();
+
+        System.out.println("Enter n value (Inverted Triangle Int): ");
+        N = sc.nextInt();
+        invertedTriangleInt(N);
     }
 }
