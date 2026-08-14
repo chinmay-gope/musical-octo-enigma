@@ -6,6 +6,10 @@ public class Loops {
     static void main() {
         Scanner sc = new Scanner(System.in);
 
+        System.out.println(getNthPrime(4));
+        System.out.println(getNthPrime(6));
+        System.out.println(getNthPrime(7));
+
         System.out.print("Enter a isHappyNumber: ");
         int n = sc.nextInt();
         boolean isHappy = isHappy(n);
@@ -56,6 +60,38 @@ public class Loops {
 
         swapFirstLastDigit(n);
         swapFirstLastDigitArithmetic(n);
+    }
+
+
+    static boolean isPrime(int n) {
+        boolean isPrime = true;
+
+        if (n <= 1) return !isPrime;
+        if (n == 2) return isPrime;
+        if (n % 2 == 0) return !isPrime;
+
+        for (int i = 3; i < Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return !isPrime;
+            }
+        }
+        return isPrime;
+    }
+
+    static int getNthPrime(int n) {
+        if (n <= 0) return -1;
+
+        int count = 0;
+        int nthPrime = 1;
+
+        while (count < n) {
+            nthPrime++;
+
+            if (isPrime(nthPrime)) {
+                count++;
+            }
+        }
+        return nthPrime;
     }
 
     public static void swapFirstLastDigit(int num) {
