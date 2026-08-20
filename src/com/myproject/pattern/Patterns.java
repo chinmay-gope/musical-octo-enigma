@@ -68,6 +68,20 @@ public class Patterns {
         }
     }
 
+    void invertedCentralTriangle(int n) {
+        for (int i = n; i >= 1; i--) {
+            // spaces
+            for (int j = 0; j < n - i; j++) {
+                System.out.print("  ");
+            }
+            // stars
+            for (int j = 0; j < 2 * i - 1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
     void invertedTriangleInt(int n) {
         for (int i = n; i > 0; i--) {
             // leading spaces
@@ -146,8 +160,12 @@ public class Patterns {
         invertedTriangle(N);
         System.out.println();
 
+        System.out.println("Enter n value (Inverted Central Triangle): ");
+        N = sc.nextInt();
+        invertedCentralTriangle(N);
+        System.out.println();
 
-        System.out.println("Enter n value (Inverted Half Triangle): ");
+        System.out.println("Enter n value (Inverted Half Pyramid): ");
         N = sc.nextInt();
         invertedHalfPyramid(N);
         System.out.println();

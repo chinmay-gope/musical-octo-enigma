@@ -1,5 +1,7 @@
 package com.myproject.introduction.arrays;
 
+import java.util.Arrays;
+
 //Input:
 //arr1 = [1, 4, 7, 8, 10]
 //arr2 = [2, 3, 9]
@@ -7,34 +9,61 @@ package com.myproject.introduction.arrays;
 public class Lab2 {
 
     void main() {
-        int[] stockPrices = {7, 1, 5, 3, 6, 4};
+        int[] stockPrices = {7, 2, 5, 3, 6, 1};
+//        stockPrices = new int[]{7, -2, 1, -9, 17, -19};
+//        stockPrices = new int[]{7, 6, 4, 3, 1};
 
-        int maxProfit = maxProfit(stockPrices);
+        System.out.println("Profit: " + maxProfit(stockPrices));
 
-        System.out.println("maxProfit = " + maxProfit);
+        int[] A = {1, 4, 7, 8, 10};
+        int[] B = {2, 3, 9};
+
+        merge(A, B);
     }
 
     void merge(int[] A, int[] B) {
         int[] C = new int[A.length + B.length];
+        int i = 0, j = 0, k = 0;
 
-        int i = 0, j = 0, idx = 0;
-
-//        while ()
-    }
-
-
-    //    {7, 1, 5, 3, 6, 4}
-    public int maxProfit(int[] prices) {
-        int maxProfit = 0, bestBuy = prices[0]; //7
-
-        for (int price : prices) { //price:1
-            if (price >= bestBuy) {  // 1 > 7
-                maxProfit = Math.max(maxProfit, price - bestBuy); // max(0,0)
+        while (i < A.length && j < B.length) {
+            if (A[i] <= B[j]) {
+                C[k++] = A[i++];
+            } else {
+                C[k++] = B[j++];
             }
-            bestBuy = Math.min(bestBuy, price); // 7 ()
         }
 
-        System.out.println("bestBuy = " + bestBuy);
+        while (i < A.length) {
+            C[k++] = A[i++];
+        }
+
+        while (j < B.length) {
+            C[k++] = B[j++];
+        }
+
+        System.out.println(Arrays.toString(C));
+    }
+
+
+    public int maxProfit(int[] prices) {
+        int minPrice = prices[0], maxProfit = 0;
+        int buy = 0, sell = 0;
+
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price;
+            }
+            int profit = price - minPrice;
+            if (profit > maxProfit) {
+                maxProfit = profit;
+                buy = minPrice;
+                sell = price;
+            }
+        }
+
+        System.out.println("Buy at: " + buy);
+        System.out.println("Sell at: " + sell);
         return maxProfit;
     }
+
 }

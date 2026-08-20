@@ -1,8 +1,6 @@
 package com.myproject.introduction.arrays;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 // Input : [0, 1, 0, 3, 12]
 // Output : [1, 3, 12, 0, 0]
@@ -18,6 +16,14 @@ public class Lab1 {
         removeDuplicates(dupArr);
         printDuplicates(dupArr);
         printDuplicates2(dupArr);
+
+        List<Integer> allMissing = findAllMissing(new int[]{4, 2, 3, 7, 8, 2, 3, 1});
+        List<Integer> allMissing1 = findAllMissing(new int[]{1, 1, 2, 2, 5, 6});
+        List<Integer> allMissing2 = findAllMissing(new int[]{2, 3, 4, 5, 5});
+
+        System.out.println("\nallMissing = " + allMissing);
+        System.out.println("\nallMissing1 = " + allMissing1);
+        System.out.println("\nallMissing2 = " + allMissing2);
     }
 
     void moveZerosToEnd(int[] arr) {
@@ -97,5 +103,30 @@ public class Lab1 {
                 System.out.print(arr[i] + " ");
             }
         }
+    }
+
+    List<Integer> findAllMissing(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            int correctIndex = nums[i] - 1;
+
+            if (correctIndex >= 0 && correctIndex < nums.length && nums[i] != nums[correctIndex]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIndex];
+                nums[correctIndex] = temp;
+            } else {
+                i++;
+            }
+        }
+
+        List<Integer> missing = new ArrayList<>();
+        for (i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                missing.add(i + 1);
+            }
+        }
+
+        return missing;
     }
 }
