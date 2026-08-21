@@ -5,9 +5,14 @@ import java.util.Stack;
 public class DecodeServerLog {
 
     private static void printLog(DecodeServerLog decoder, String testCase) {
-        String result = decoder.decode(testCase);
-        System.out.println("Encoded : " + testCase);
-        System.out.println("Decoded : " + result);
+        try {
+            String result = decoder.decode(testCase);
+            System.out.println("Encoded : " + testCase);
+            System.out.println("Decoded : " + result);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Encoded : " + testCase);
+            System.out.println("Error    : " + e.getMessage());
+        }
         System.out.println();
     }
 
@@ -15,10 +20,10 @@ public class DecodeServerLog {
         DecodeServerLog decoder = new DecodeServerLog();
 
         printLog(decoder, "3[a]2[bc]");      // aaabcbc
-        printLog(decoder, "2[a3[c]]");       // acccaccc
-        printLog(decoder, "3[a2[c]]");       // accaccacc
-        printLog(decoder, "10[a]");          // aaaaaaaaaa
-        printLog(decoder, "2[abc]3[cd]ef");  // abcabccdcdcdef
+        printLog(decoder, "2[a3[c]]");       // accacc
+        printLog(decoder, "3[a2[b]");        // malformed (missing ']')
+        printLog(decoder, "abc]");           // malformed (extra ']')
+        printLog(decoder, "2[]");            // malformed (empty repeat)
     }
 
     private String decode(String encodedString) {
@@ -29,15 +34,13 @@ public class DecodeServerLog {
         int k = 0;
 
         for (char ch : encodedString.toCharArray()) {
-
             if (Character.isDigit(ch)) {
-                // Build multi-digit number
                 k = k * 10 + (ch - '0');
-//                System.out.println("Digit: " + ch + ", Current k: " + k);
 
             } else if (ch == '[') {
-                // Save current state
-//                System.out.println("Encountered [: Pushing current k: " + k + ", Current string: " + current);
+                if (k == 0) {
+                    throw new IllegalArgumentException("Missing repeat count before '['");
+                }
                 counts.push(k);
                 resultStack.push(current);
 
@@ -45,18 +48,27 @@ public class DecodeServerLog {
                 k = 0;
 
             } else if (ch == ']') {
-                // Decode current section
-//                System.out.println("Encountered ]: Current string before repeat: " + current);
-                StringBuilder temp = current;
+                if (counts.isEmpty() || resultStack.isEmpty()) {
+                    throw new IllegalArgumentException("Unmatched closing bracket ']'");
+                }
+
+                String temp = current.toString();
+                if (temp.isEmpty()) {
+                    throw new IllegalArgumentException("Empty repeat block [] is not allowed");
+                }
+
                 current = resultStack.pop();
-
                 int repeatTimes = counts.pop();
+                current.append(temp.repeat(repeatTimes));
 
-//                System.out.println("Repeating: " + temp + ", Times: " + repeatTimes);
-                current.repeat(temp, repeatTimes);
             } else {
                 current.append(ch);
             }
+        }
+
+        // If stacks are not empty, brackets were unmatched
+        if (!counts.isEmpty() || !resultStack.isEmpty()) {
+            throw new IllegalArgumentException("Unmatched opening bracket '['");
         }
 
         return current.toString();

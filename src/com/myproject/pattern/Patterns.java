@@ -1,5 +1,6 @@
 package com.myproject.pattern;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Patterns {
@@ -98,35 +99,100 @@ public class Patterns {
         }
     }
 
-    void butterfly(int row) {
-        for (int i = 1; i <= row; i++) {
+    void butterfly(int n) {
+
+        // upper half
+        for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
                 System.out.print("* ");
             }
-            for (int j = 1; j <= 2 * (row - i); j++) {
+
+            int spaces = 2 * (n - i);
+            for (int j = 1; j <= spaces; j++) {
                 System.out.print("  ");
             }
+
             for (int j = 1; j <= i; j++) {
                 System.out.print("* ");
             }
+
             System.out.println();
         }
-        for (int i = row - 1; i >= 1; i--) {
+
+        // lower half
+        for (int i = n - 1; i >= 1; i--) {
             for (int j = 1; j <= i; j++) {
                 System.out.print("* ");
             }
-            for (int j = 1; j <= 2 * (row - i); j++) {
+
+            int spaces = 2 * (n - i);
+            for (int j = 1; j <= spaces; j++) {
                 System.out.print("  ");
             }
+
             for (int j = 1; j <= i; j++) {
                 System.out.print("* ");
             }
+
             System.out.println();
         }
     }
 
+    void butterflyWithLessLoops(int n) {
+
+        for (int i = 1; i <= 2 * n - 1; i++) {
+
+            int row = i <= n ? i : 2 * n - i;
+            int spaces = 2 * (n - row); // evenly distributed stars in center. (4 4)
+//            spaces = 2 * (n - row) - 1; // for un-even distributed stars in center based on n/2 value. (4 3)
+
+            for (int j = 1; j <= 2 * row + spaces; j++) {
+
+                if (j <= row || j > row + spaces) {
+                    System.out.print("* ");
+//                    System.out.print(i + "," + j + " ");
+//                    if (j <= row) System.out.print("_ ");
+//                    if (j > row + spaces) System.out.print("> ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+//            System.out.print(i + " ");
+            System.out.println();
+        }
+    }
+
+    void labPattern(int[][] arr) {
+
+        int n = arr.length;
+        boolean[] row = new boolean[n];
+        boolean[] col = new boolean[arr[0].length];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == 0) {
+                    row[i] = true;
+                    col[j] = true;
+                }
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (row[i] || col[j]) {
+                    arr[i][j] = 0;
+                }
+            }
+        }
+
+        System.out.println(Arrays.deepToString(arr));
+    }
+
     void main() {
+
+        butterflyWithLessLoops(4);
+
         Scanner sc = new Scanner(System.in);
+        labPattern(new int[][]{{1, 2, 0}, {4, 5, 6}, {0, 8, 0}});
 
         System.out.println("Enter row value (Butterfly): ");
         int N = sc.nextInt();
