@@ -8,8 +8,8 @@ public class Lab6 {
         System.out.println(objArr[2][1]);
         System.out.println(objArr[1].length);
 
-//        starPyramid(4);
-        invertedStarPyramid(4);
+        starPyramid(5);
+        invertedStarPyramid(8);
     }
 
     void starPyramid(int n) {

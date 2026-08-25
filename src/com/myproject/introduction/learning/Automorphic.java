@@ -4,9 +4,9 @@ void main() {
     System.out.println(countVowels("ABCDE"));
 
     int[] arr = new int[10];
-//    isAutoMorphic(625);
-//    isAutoMorphic(76);
-//    isAutoMorphic(7);
+    isAutoMorphic(625);
+    isAutoMorphic(76);
+    isAutoMorphic(7);
 }
 
 void isAutoMorphic(int i) {
