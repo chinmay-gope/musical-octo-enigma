@@ -11,19 +11,23 @@ public class Home {
 //        arr = new int[]{1, 2, 6, 4, 5, 3, 7, 8};
 //        arr = new int[]{1, 2, 3, 7, 5, 6, 4, 6, 9};
         arr = new int[]{2, 6, 4, 8, 10, 9, 15};
-        shortestUnsortedSubArr(arr);
-
+//        shortestUnsortedSubArr(arr);
+//
 //        printPascal(6);
-        System.out.println();
+//        System.out.println();
+//
+//        findKthElement(5, 3);
+//        findKthElement(4, 2);
+//        System.out.println();
+//
+//        printNthRow(5);
+//        printNthRow(4);
+//
+//        pascalTriangle(5);
 
-        findKthElement(5, 3);
-        findKthElement(4, 2);
-        System.out.println();
-
-        printNthRow(5);
-        printNthRow(4);
-
-        pascalTriangle(5);
+        int[] nums = {-1, 2, 1, -4};
+        int target = 1;
+        System.out.println("threeSumClosest: " + threeSumClosest(nums, target));
     }
 
     private static void shortestUnsortedSubArr(int[] arr) {
@@ -141,5 +145,35 @@ public class Home {
         }
 
         System.out.println(Arrays.deepToString(arr));
+    }
+
+    //    Input: nums = [-1,2,1,-4], target = 1
+    //    Output: 2
+    private static int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums); // Step 1: sort the array
+        int closest = nums[0] + nums[1] + nums[2]; // initialize with first 3 elements
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            int left = i + 1;
+            int right = nums.length - 1;
+
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+
+                // update closest if this sum is nearer to target
+                if (Math.abs(sum - target) < Math.abs(closest - target)) {
+                    closest = sum;
+                }
+
+                if (sum < target) {
+                    left++; // need a bigger sum
+                } else if (sum > target) {
+                    right--; // need a smaller sum
+                } else {
+                    return sum; // exact match
+                }
+            }
+        }
+        return closest;
     }
 }
