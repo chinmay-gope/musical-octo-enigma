@@ -1,4 +1,6 @@
-package com.myproject.loan_banking;
+package com.myproject.loan_banking.loan;
+
+import com.myproject.loan_banking.model.Customer;
 
 public class VehicleLoan extends Loan {
 
@@ -19,15 +21,5 @@ public class VehicleLoan extends Loan {
         return customer.monthlyIncome() >= 25000
                 && customer.creditScore() >= 650
                 && getAmount() <= vehiclePrice * 0.9;
-    }
-
-    @Override
-    public double calculateEMI() {
-        double monthlyRate = getInterestRate() / 1200;
-        int months = getTenureInYears() * 12;
-
-        return getAmount() * monthlyRate *
-                Math.pow(1 + monthlyRate, months)
-                / (Math.pow(1 + monthlyRate, months) - 1);
     }
 }
