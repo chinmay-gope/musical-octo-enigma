@@ -131,4 +131,9 @@ public class InterestingLab4 {
         }
         return prefix;
     }
+
+    //Leetcode 739
+    private int[] dailyTemperatures(int[] temperatures) {
+        return null;
+    }
 }

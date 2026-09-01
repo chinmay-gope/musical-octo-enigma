@@ -2,13 +2,16 @@ package com.myproject.introduction.accessmodfr;
 
 public class Product {
 
-    private int productId;
+    private static int nextProductId = 100;
+
+    private final int productId;
     private String productName;
     private double price;
     private int quantity;
 
-    public Product(int productId, String productName, double price, int quantity) {
-        this.productId = productId;
+    public Product(String productName, double price, int quantity) {
+
+        this.productId = ++nextProductId;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
@@ -30,13 +33,8 @@ public class Product {
         }
     }
 
-    // Getters Setters
     public int getProductId() {
         return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
     }
 
     public String getProductName() {
@@ -61,5 +59,15 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }

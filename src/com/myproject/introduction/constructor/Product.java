@@ -26,12 +26,14 @@ public class Product {
     // Display method
     public void display() {
         System.out.printf(
-                "Product ID: %s\n" +
-                        "Product Name: %s\n" +
-                        "Product Brand: %s\n" +
-                        "Price: %.2f\n" +
-                        "Warranty: %d (in Yrs) \n" +
-                        "______________________________________\n",
+                """
+                        Product ID: %s
+                        Product Name: %s
+                        Product Brand: %s
+                        Price: %.2f
+                        Warranty: %d (in Yrs)\s
+                        ______________________________________
+                        """,
                 prodID, name, brand, price, warrantyInYrs
         );
     }
