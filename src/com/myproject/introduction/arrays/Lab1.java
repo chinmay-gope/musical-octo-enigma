@@ -12,7 +12,22 @@ public class Lab1 {
 //        arr = new int[]{1, 2, 3, 4, 5};
         moveZerosToEnd(arr);
 
+        int[][] newArr = {
+                {2, 3, 4},  //0
+                {12, 23, 14}, //1
+                {2, 3, 4, 23, 4, 56}, //2
+        };
+
+        // 4= [2][4]
+        // newArr[1][2] == 14
+        // newArr[1][1] == 13
+        // newArr[1][0] == 12
+
+        System.out.println(newArr[2].length); //3
+
         int[] dupArr = {2, 4, 2, 3, 2, 4, 4};
+        System.out.println(newArr.length); //3
+
         removeDuplicates(dupArr);
         printDuplicates(dupArr);
         printDuplicates2(dupArr);
