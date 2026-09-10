@@ -14,11 +14,14 @@ public class Test3 {
         getKthMaxElSelSort(nums1, 3);
         getKthMaxElSelSort(nums2, 2);
 
-        int[] windowSum = circularWindowSum(nums2, 2);
+        int[] windowSum = circularWindowSum(new int[]{5, 7, 1, 4}, 2);
         System.out.println(Arrays.toString(windowSum));
 
-        windowSum = circularWindowSum(nums2, 3);
+        windowSum = circularWindowSum(new int[]{1, 2, 3, 4, 5, 6}, 3);
         System.out.println(Arrays.toString(windowSum));
+
+//        [8, 5, 9, 12]
+//        [9, 12, 15, 12, 9, 6]
     }
 
     private static Integer getKthMaxEl(int[] nums, int k) {
@@ -39,6 +42,7 @@ public class Test3 {
     private static void getKthMaxElSelSort(int[] nums, int k) {
         if (k <= 0 || k > nums.length) return;
 
+//        int[] nums1 = {1, 6, 4, 8, 5, 9, 6};
         // Perform selection sort only for k iterations
         for (int i = 0; i < k; i++) {
             int maxIdx = i;
@@ -59,31 +63,26 @@ public class Test3 {
 
     private static int[] circularWindowSum(int[] arr, int k) {
         int n = arr.length;
-
-        if (k <= 0 || k > n) {
-            return new int[0];
-        }
+        if (k <= 0 || k > n) return new int[0];
 
         int[] result = new int[n];
-
         int sum = 0;
 
+        // Initial window
         for (int j = 1; j <= k; j++) {
             sum += arr[j % n];
         }
-
         result[0] = sum;
 
-        // Slide the circular window
+        // Slide the window
         for (int i = 1; i < n; i++) {
             int outgoing = arr[i % n];
             int incoming = arr[(i + k) % n];
-
-            sum = sum - outgoing + incoming;
-
+            sum += incoming - outgoing;
             result[i] = sum;
         }
 
         return result;
     }
+
 }

@@ -24,6 +24,14 @@ public interface IOFunction {
 
     String toString();
 
+    boolean equals(Object obj);
+
+    int hashCode();
+
+/*  cus it's not public and instance method.
+    It qualifies as another abstract method*/
+//    Object clone() throws CloneNotSupportedException;
+
     default void f1() {
         System.out.println("IOFunction.f1 called");
     }
