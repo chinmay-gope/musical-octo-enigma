@@ -1,8 +1,8 @@
-package com.myproject.poc;
+package com.myproject.tictactoe;
 
 import java.util.Scanner;
 
-public class TicTacToe {
+public class POC0 {
 
     static char[][] board = {
             {' ', ' ', ' '},
