@@ -25,24 +25,6 @@ public final class UpgradeOptimizer {
             List<Equipment> equipment,
             OreInventory inventory,
             OreReserve reserve,
-            UpgradePreference preference
-    ) {
-
-        return recommend(
-                equipment,
-                inventory,
-                reserve,
-                preference,
-                DEFAULT_LOOK_AHEAD,
-                DEFAULT_BEAM_WIDTH
-        );
-    }
-
-
-    public static UpgradePlan recommend(
-            List<Equipment> equipment,
-            OreInventory inventory,
-            OreReserve reserve,
             UpgradePreference preference,
             int lookAhead,
             int beamWidth

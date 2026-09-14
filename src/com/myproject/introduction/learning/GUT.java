@@ -32,9 +32,10 @@ public class GUT {
 
         System.out.println("_____________REVERSE OBJ ARR________________");
 
-        Object[] objectArr = {1, '2' + 3, 'A', "Hello", new Object[]{4, 5, new Object[]{6, null, 8}}};
-        reverseObjectArray(objectArr);
-        System.out.println(Arrays.deepToString(objectArr));
+//        Object[] objectArr = {1, '2' + 3, 'A', "Hello", new Object[]{4, 5, new Object[]{6, null, 8}}};
+        Object[] debugArr = {1, 2, 3, new Object[]{4, 5, new Object[]{6, 7}}};
+        reverseObjectArray(debugArr);
+        System.out.println(Arrays.deepToString(debugArr));
     }
 
     private static void reverseObjectArray(Object[] arr) {
@@ -127,7 +128,8 @@ public class GUT {
             }
 
             if (currentMax == Integer.MIN_VALUE) {
-                throw new IllegalArgumentException("Not enough distinct elements for k=" + k);
+                System.out.println("Not enough distinct elements for k=" + k);
+                return -1;
             }
 
             distinctCount++;
@@ -139,6 +141,6 @@ public class GUT {
             }
         }
 
-        throw new IllegalArgumentException("Unexpected flow");
+        return -1;
     }
 }
