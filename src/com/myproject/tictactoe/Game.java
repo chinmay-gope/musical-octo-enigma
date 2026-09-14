@@ -1,5 +1,7 @@
 package com.myproject.tictactoe;
 
+import com.myproject.tictactoe.exception.InvalidState;
+
 public class Game {
 
     private final Board board;
@@ -25,20 +27,20 @@ public class Game {
     public void play(Position position) {
 
         if (winner != null) {
-            throw new IllegalStateException(
+            throw new InvalidState(
                     "Game already finished. Winner: " + winner
             );
         }
 
         if (!position.isValid()) {
-            throw new IllegalArgumentException(
-                    "Invalid position: " + position
+            throw new InvalidState(
+                    "Invalid position: ", position
             );
         }
 
         if (!board.isEmpty(position)) {
-            throw new IllegalArgumentException(
-                    "Position already occupied: " + position
+            throw new InvalidState(
+                    "Position already occupied: ", position
             );
         }
 
@@ -105,11 +107,5 @@ public class Game {
                 + ","
                 + (position.col() + 1)
                 + ")";
-    }
-
-    public void printPieces() {
-
-        System.out.println("X pieces: " + xPieces.pieces());
-        System.out.println("O pieces: " + oPieces.pieces());
     }
 }

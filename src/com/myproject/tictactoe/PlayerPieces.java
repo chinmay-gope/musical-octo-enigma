@@ -22,16 +22,4 @@ public class PlayerPieces {
 
         return removed;
     }
-
-    public boolean contains(Position position) {
-        return pieces.contains(position);
-    }
-
-    public Deque<Position> pieces() {
-        return new ArrayDeque<>(pieces);
-    }
-
-    public int size() {
-        return pieces.size();
-    }
 }

@@ -1,12 +1,14 @@
 package com.myproject.tictactoe;
 
+import com.myproject.tictactoe.exception.InvalidState;
+
 public class Board {
 
     private final Player[][] board = new Player[3][3];
 
     public Player get(Position position) {
         if (!position.isValid()) {
-            throw new IllegalArgumentException("Invalid position: " + position);
+            throw new InvalidState("Invalid position: ", position);
         }
 
         return board[position.row()][position.col()];
@@ -19,12 +21,12 @@ public class Board {
     public void place(Position position, Player player) {
 
         if (!position.isValid()) {
-            throw new IllegalArgumentException("Invalid position: " + position);
+            throw new InvalidState("Invalid position: ", position);
         }
 
         if (!isEmpty(position)) {
-            throw new IllegalArgumentException(
-                    "Position already occupied: " + position
+            throw new InvalidState(
+                    "Position already occupied: ", position
             );
         }
 
@@ -34,7 +36,7 @@ public class Board {
     public void remove(Position position) {
 
         if (!position.isValid()) {
-            throw new IllegalArgumentException("Invalid position: " + position);
+            throw new InvalidState("Invalid position: ", position);
         }
 
         board[position.row()][position.col()] = null;
