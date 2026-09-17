@@ -14,16 +14,24 @@ public class ClimbingStairs {
 
     private static int climbStairsTab(int n) {
         if (n == 1 || n == 2) return n;
-        int[] dp = new int[n + 1];
+//        int[] dp = new int[n + 1];
 
-        dp[1] = 1;
-        dp[2] = 2;
+//        dp[1] = 1;
+//        dp[2] = 2;
+        int prev2 = 1; // n-2
+        int prev1 = 2; // n-1
+
+        int res = prev1;
 
         for (int i = 3; i <= n; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2];
+//            dp[i] = dp[i - 1] + dp[i - 2];
+            res = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = res;
         }
 
-        return dp[n];
+        return res;
+//        return dp[n];
     }
 
     static int climbStairs(int n) {
