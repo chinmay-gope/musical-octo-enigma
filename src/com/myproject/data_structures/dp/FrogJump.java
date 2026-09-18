@@ -17,25 +17,25 @@ public class FrogJump {
         dp[0] = 0;
         dp[1] = Math.abs(ht[0] - ht[1]); */
 
-        int prev1 = 0;
-        int prev2 = Math.abs(ht[0] - ht[1]);
-        int res = prev2;
+        int cost1 = Math.abs(ht[0] - ht[1]); // cost to reach stair 1
+        int cost2 = 0; // cost to reach stair 0
+        int curr = cost1;
 
         for (int i = 2; i < n; i++) {
 /*          int jump1 = dp[i - 1] + Math.abs(ht[i] - ht[i - 1]);
             int jump2 = dp[i - 2] + Math.abs(ht[i] - ht[i - 2]);
             dp[i] = Math.min(jump1, jump2);*/
 
-            int jump1 = prev2 + Math.abs(ht[i] - ht[i - 1]);
-            int jump2 = prev1 + Math.abs(ht[i] - ht[i - 2]);
+            int from1 = cost1 + Math.abs(ht[i] - ht[i - 1]);
+            int from2 = cost2 + Math.abs(ht[i] - ht[i - 2]);
 
-            res = Math.min(jump1, jump2);
+            curr = Math.min(from1, from2);
 
-            prev1 = prev2;
-            prev2 = res;
+            cost2 = cost1;
+            cost1 = curr;
         }
 
-        return res;
+        return curr;
     }
 
 }

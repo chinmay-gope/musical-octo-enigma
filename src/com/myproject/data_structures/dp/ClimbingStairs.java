@@ -21,16 +21,16 @@ public class ClimbingStairs {
         int prev2 = 1; // n-2
         int prev1 = 2; // n-1
 
-        int res = prev1;
+        int curr = prev1;
 
         for (int i = 3; i <= n; i++) {
 //            dp[i] = dp[i - 1] + dp[i - 2];
-            res = prev1 + prev2;
+            curr = prev1 + prev2;
             prev2 = prev1;
-            prev1 = res;
+            prev1 = curr;
         }
 
-        return res;
+        return curr;
 //        return dp[n];
     }
 
