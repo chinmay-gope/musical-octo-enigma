@@ -1,17 +1,18 @@
 package com.myproject.data_structures.dp;
 
 public class HouseRobber {
+    static void main(String[] args) {
+        int[] nums1 = {2, 7, 9, 3, 1};
+        System.out.println("House Robber I result = " + robLinear(nums1));
 
-    static void main() {
-        int[] nums = {2, 7, 9, 3, 1};
-        System.out.println("rob(nums) = " + rob(nums));
-        System.out.println("robOpt(nums) = " + robOpt(nums)); // 12
-
-        System.out.println("cyclicRob(nums) = " + cyclicRob(nums)); // 11
+        int[] nums2 = {2, 7, 9, 3, 1};
+        System.out.println("House Robber II result = " + robCircular(nums2));
     }
 
-    public static int rob(int[] nums) {
-/*      int n = nums.length;
+    // ---------------- House Robber I ----------------
+    public static int robLinear(int[] nums) {
+        int n = nums.length;
+        if (n == 0) return 0;
         if (n == 1) return nums[0];
 
         int[] dp = new int[n];
@@ -19,54 +20,37 @@ public class HouseRobber {
         dp[1] = Math.max(nums[0], nums[1]);
 
         for (int i = 2; i < n; i++) {
-            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]); // max(inc, exc)
+            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
         }
 
         return dp[n - 1];
-*/
-        return rob(nums, 0, nums.length - 1);
     }
 
-    public static int robOpt(int[] nums) {
+    // ---------------- House Robber II ----------------
+    public static int robCircular(int[] nums) {
         int n = nums.length;
+        if (n == 0) return 0;
         if (n == 1) return nums[0];
+        if (n == 2) return Math.max(nums[0], nums[1]);
 
-        int prev1 = nums[0];
-        int prev2 = Math.max(nums[0], nums[1]);
+        // Case 1: Rob houses from 0 to n-2 (exclude last)
+        int case1 = robRange(nums, 0, n - 2);
+        // Case 2: Rob houses from 1 to n-1 (exclude first)
+        int case2 = robRange(nums, 1, n - 1);
 
-        for (int i = 2; i < n; i++) {
-            prev1 = prev2;
+        return Math.max(case1, case2);
+    }
+
+    private static int robRange(int[] nums, int start, int end) {
+        int prev2 = 0;
+        int prev1 = 0;
+
+        for (int i = start; i <= end; i++) {
+            int curr = Math.max(prev1, prev2 + nums[i]);
+            prev2 = prev1;
+            prev1 = curr;
         }
 
+        return prev1;
     }
-
-    //    HOUSE ROBBER - 2 (houses are cyclic)
-    public static int cyclicRob(int[] nums) {
-        if (nums.length == 1) return nums[0];
-
-        if (nums.length == 2) return Math.max(nums[0], nums[1]);
-
-        return Math.max(
-                rob(nums, 0, nums.length - 2),
-                rob(nums, 1, nums.length - 1)
-        );
-    }
-
-    private static int rob(int[] nums, int st, int end) {
-/*      int[] dp = new int[nums.length - 1];
-        dp[0] = nums[st];
-        dp[1] = Math.max(nums[st], nums[st + 1]);
-*/
-        int prev1 = nums[st];
-        int prev2 = Math.max(nums[st], nums[st + 1]);
-
-        for (int i = st + 2, j = 2; i <= end; i++, j++) {
-//            dp[j] = Math.max(nums[i] + dp[j - 2], dp[j - 1]); // {inc, exc}
-
-            prev1 = prev2;
-        }
-
-//        return dp[n - 2];
-    }
-
 }
