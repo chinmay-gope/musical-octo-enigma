@@ -1,8 +1,7 @@
 package com.myproject.data_structures.dp;
 
 public class ClimbingStairs {
-    static void main() {
-
+    static void main(String[] args) {
         System.out.println("climbStairs(5) = " + climbStairs(5));
         System.out.println("climbStairs(10) = " + climbStairs(10));
 
@@ -10,28 +9,6 @@ public class ClimbingStairs {
 
         System.out.println("climbStairsTab(10) = " + climbStairsTab(10));
         System.out.println("climbStairsTab(45) = " + climbStairsTab(45)); // 1836311903
-    }
-
-    private static int climbStairsTab(int n) {
-        if (n == 1 || n == 2) return n;
-/*      int[] dp = new int[n + 1];
-        dp[1] = 1;
-        dp[2] = 2;
- */
-        int prev2 = 1; // n-2
-        int prev1 = 2; // n-1
-
-        int curr = prev1;
-
-        for (int i = 3; i <= n; i++) {
-//            dp[i] = dp[i - 1] + dp[i - 2];
-            curr = prev1 + prev2;
-            prev2 = prev1;
-            prev1 = curr;
-        }
-
-        return curr;
-//        return dp[n];
     }
 
     static int climbStairs(int n) {
@@ -45,4 +22,24 @@ public class ClimbingStairs {
         return dp[n] = climbStairs(n - 1, dp) + climbStairs(n - 2, dp);
     }
 
+    private static int climbStairsTab(int n) {
+        if (n == 1 || n == 2) return n;
+
+/*        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;*/
+
+        int prev2 = 1; // ways to reach step 1
+        int prev1 = 2; // ways to reach step 2
+        int curr = prev1;
+
+        for (int i = 3; i <= n; i++) {
+//          dp[i] = dp[i - 1] + dp[i - 2];
+            curr = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = curr;
+        }
+
+        return curr; // dp[n]
+    }
 }
