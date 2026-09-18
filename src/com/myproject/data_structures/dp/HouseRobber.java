@@ -33,15 +33,11 @@ public class HouseRobber {
 
         int prev1 = nums[0];
         int prev2 = Math.max(nums[0], nums[1]);
-        int curr = prev2;
 
         for (int i = 2; i < n; i++) {
-            curr = Math.max(prev1 + nums[i], prev2);
             prev1 = prev2;
-            prev2 = curr;
         }
 
-        return curr;
     }
 
     //    HOUSE ROBBER - 2 (houses are cyclic)
@@ -63,18 +59,14 @@ public class HouseRobber {
 */
         int prev1 = nums[st];
         int prev2 = Math.max(nums[st], nums[st + 1]);
-        int curr = prev2;
 
         for (int i = st + 2, j = 2; i <= end; i++, j++) {
 //            dp[j] = Math.max(nums[i] + dp[j - 2], dp[j - 1]); // {inc, exc}
-            curr = Math.max(prev1 + nums[i], prev2);
 
             prev1 = prev2;
-            prev2 = curr;
         }
 
 //        return dp[n - 2];
-        return curr;
     }
 
 }
