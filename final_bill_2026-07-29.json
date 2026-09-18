@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "name": "Burger",
+      "price": 120,
+      "quantity": 3,
+      "amount": 360.0
+    }
+  ],
+  "subtotal": 360.0,
+  "gst": 18.0,
+  "serviceCharge": 36.0,
+  "total": 414.0
+}
