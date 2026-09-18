@@ -16,19 +16,19 @@ public class Knapsack implements KnapsackSolver {
     }
 
     @Override
-    public int knapsack01_Rec(int[][] items, int W) {
+    public double knapsack01_Rec(int[][] items, int W) {
         return knapsack01(items, W, items.length);
     }
 
     @Override
-    public int knapsack01_MemoDP(int[][] items, int W) {
+    public double knapsack01_MemoDP(int[][] items, int W) {
         int[][] memo = new int[items.length + 1][W + 1];
         for (int[] row : memo) Arrays.fill(row, -1);
         return knapsack01(items, W, items.length, memo);
     }
 
     @Override
-    public int knapsack01_TabDP(int[][] items, int W) {
+    public double knapsack01_TabDP(int[][] items, int W) {
         int N = items.length;
         int[][] dp = new int[N + 1][W + 1];
         for (int i = 1; i <= N; i++) {

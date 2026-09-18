@@ -9,9 +9,9 @@ public interface KnapsackSolver {
 
     double fractionalKnapsack(int[][] items, int K);
 
-    int knapsack01_Rec(int[][] items, int W);
+    double knapsack01_Rec(int[][] items, int W);
 
-    int knapsack01_MemoDP(int[][] items, int W);
+    double knapsack01_MemoDP(int[][] items, int W);
 
-    int knapsack01_TabDP(int[][] items, int W);
+    double knapsack01_TabDP(int[][] items, int W);
 }

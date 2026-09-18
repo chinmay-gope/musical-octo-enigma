@@ -6,20 +6,21 @@ public class KnapsackOptimized implements KnapsackSolver {
     static void main(String[] args) {
         KnapsackSolver solver = new KnapsackOptimized();
 
-        IO.println("Fractional Knapsack result = " + solver.fractionalKnapsack(KnapsackSolver.items1, KnapsackSolver.K1));
+        System.out.println();
+       /*IO.println("Fractional Knapsack result = " + solver.fractionalKnapsack(KnapsackSolver.items1, KnapsackSolver.K1));
         IO.println("Knapsack01 Recursion = " + solver.knapsack01_Rec(KnapsackSolver.items2, KnapsackSolver.K2));
-        IO.println("Knapsack01 MemoizationDP = " + solver.knapsack01_MemoDP(KnapsackSolver.items2, KnapsackSolver.K2));
+        IO.println("Knapsack01 MemoizationDP = " + solver.knapsack01_MemoDP(KnapsackSolver.items2, KnapsackSolver.K2));*/
         IO.println("Knapsack01 TabulationDP (Optimized) = " + solver.knapsack01_TabDP(KnapsackSolver.items2, KnapsackSolver.K2));
     }
 
     @Override
-    public int knapsack01_Rec(int[][] items, int W) {
+    public double knapsack01_Rec(int[][] items, int W) {
         // Recursion is inherently exponential, not optimized
         return knapsack01(items, W, items.length);
     }
 
     @Override
-    public int knapsack01_MemoDP(int[][] items, int W) {
+    public double knapsack01_MemoDP(int[][] items, int W) {
         // Same as full version, included for completeness
         int[][] memo = new int[items.length + 1][W + 1];
         for (int[] row : memo) Arrays.fill(row, -1);
@@ -27,7 +28,7 @@ public class KnapsackOptimized implements KnapsackSolver {
     }
 
     @Override
-    public int knapsack01_TabDP(int[][] items, int W) {
+    public double knapsack01_TabDP(int[][] items, int W) {
         // Space optimized: 1D DP array
         int[] dp = new int[W + 1];
         for (int[] item : items) {
