@@ -1,6 +1,7 @@
 package com.myproject.introduction.arrays;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 // Given an integer array nums, find the shortest continuous subarray,
 // such that sorting only that subarray makes the entire array sorted in ascending order.
@@ -28,6 +29,12 @@ public class Home {
         int[] nums = {-1, 2, 1, -4};
         int target = 1;
         System.out.println("threeSumClosest: " + threeSumClosest(nums, target));
+
+        System.out.println("Sum: " + calculator("3+2*2-5/2")); // 3 + 4 - 2
+        System.out.println(calculator("3+5-2"));  // 6.0
+        System.out.println(calculator("3+5*2"));  // 13.0
+        System.out.println(calculator("10-6/2")); // 7.0
+        System.out.println(calculator("8/2*3"));  // 12.0
     }
 
     private static void shortestUnsortedSubArr(int[] arr) {
@@ -175,5 +182,57 @@ public class Home {
             }
         }
         return closest;
+    }
+
+    private static int calculator(String string) {
+
+        Stack<Integer> stack = new Stack<>();
+        int number = 0;
+
+        char operator = '+';
+
+        for (int i = 0; i <= string.length(); i++) {
+
+            char ch = i < string.length() ? string.charAt(i) : '\0';
+
+            if (Character.isDigit(ch)) {
+                number = number * 10 + (ch - '0');
+            }
+
+            if (!Character.isDigit(ch) || i == string.length()) {
+
+                switch (operator) {
+                    case '+':
+                        stack.push(number);
+                        break;
+
+                    case '-':
+                        stack.push(-number);
+                        break;
+
+                    case '*':
+                        stack.push(stack.pop() * number);
+                        break;
+
+                    case '/':
+                        if (number == 0) {
+                            throw new ArithmeticException("Division by zero");
+                        }
+                        stack.push(stack.pop() / number);
+                        break;
+                }
+
+                operator = ch;
+                number = 0;
+            }
+        }
+
+        int sum = 0;
+
+        while (!stack.isEmpty()) {
+            sum += stack.pop();
+        }
+
+        return sum;
     }
 }

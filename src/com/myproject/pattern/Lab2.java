@@ -1,7 +1,7 @@
 package com.myproject.pattern;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Lab2 {
@@ -12,7 +12,11 @@ public class Lab2 {
                 {7, 8, 9}
         });
 
-        numberPattern();
+        spiralPattern(new int[][]{
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}
+        });
     }
 
     static void numberPattern() {
@@ -32,8 +36,9 @@ public class Lab2 {
     }
 
     static void spiralPattern(int[][] matrix) {
-        List<Integer> spiral = new ArrayList<>();
-        int stRow = 0, endRow = matrix[0].length - 1;
+        List<Integer> spiral = new LinkedList<>();
+
+        int stRow = 0, endRow = matrix.length - 1;
         int stCol = 0, endCol = matrix[0].length - 1;
 
         while (stRow <= endRow && stCol <= endCol) {
@@ -42,8 +47,8 @@ public class Lab2 {
                 spiral.add(matrix[stRow][i]);
 
             // Right column
-            for (int i = stRow + 1; i <= endRow; i++)
-                spiral.add(matrix[i][endCol]);
+            for (int j = stRow + 1; j <= endRow; j++)
+                spiral.add(matrix[j][endCol]);
 
             // Bottom row (only if it's not the same as the top row)
             if (stRow < endRow) {
@@ -53,8 +58,8 @@ public class Lab2 {
 
             // Left column (only if it's not the same as the right column)
             if (stCol < endCol) {
-                for (int i = endRow - 1; i > stRow; i--)
-                    spiral.add(matrix[i][stCol]);
+                for (int j = endRow - 1; j > stRow; j--)
+                    spiral.add(matrix[j][stCol]);
             }
 
             stRow++;

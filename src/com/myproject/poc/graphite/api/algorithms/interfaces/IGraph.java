@@ -1,0 +1,29 @@
+package com.myproject.poc.graphite.api.algorithms.interfaces;
+
+import com.myproject.poc.graphite.factory.GraphType;
+import com.myproject.poc.graphite.model.Edge;
+
+import java.util.List;
+
+public interface IGraph {
+
+    void addEdge(int source, int destination);
+
+    void addEdge(int source, int destination, int weight);
+
+    void removeEdge(int source, int destination);
+    
+    List<Edge> getNeighbours(int vertex);
+
+    List<List<Edge>> getAdjacencyList();
+
+    int getVertices();
+
+    int edgeCount();
+
+    boolean isEmpty();
+
+    GraphType getGraphType();
+
+    IGraph transpose(IGraph graph);
+}
